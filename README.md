@@ -1,3 +1,3 @@
 # Alkali DSP
 
-![Alkali](alkali.jpg)
+![Alkali](alkali.png)
