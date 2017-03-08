@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FCF426611E70607000821F28 /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF4265D1E705FBB00821F28 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
+		FCCB7B1B1E70808E0092E4FC /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF4265D1E705FBB00821F28 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FC1CB85B1E70568400A8349B /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCCB7B191E70803F0092E4FC /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		FCF4265D1E705FBB00821F28 /* Alkali.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
 		FCF4265E1E705FBB00821F28 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 		FC1CB8871E705BD100A8349B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				FCCB7B191E70803F0092E4FC /* Window.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -91,7 +94,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCF426611E70607000821F28 /* Alkali.h in Headers */,
+				FCCB7B1B1E70808E0092E4FC /* Alkali.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +130,7 @@
 				TargetAttributes = {
 					FC1CB85A1E70568400A8349B = {
 						CreatedOnToolsVersion = 8.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -163,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +278,7 @@
 		FC1CB8641E70568400A8349B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -286,6 +292,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -293,6 +300,7 @@
 		FC1CB8651E70568400A8349B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
