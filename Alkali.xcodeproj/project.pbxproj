@@ -6,14 +6,8 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		FC1CB8601E70568400A8349B /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FC1CB85E1E70568400A8349B /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		FC1CB85B1E70568400A8349B /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC1CB85E1E70568400A8349B /* Alkali.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
-		FC1CB85F1E70568400A8349B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +24,7 @@
 		FC1CB8511E70568400A8349B = {
 			isa = PBXGroup;
 			children = (
-				FC1CB85D1E70568400A8349B /* Alkali */,
+				FC1CB8801E70575E00A8349B /* Sources */,
 				FC1CB85C1E70568400A8349B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,13 +37,43 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FC1CB85D1E70568400A8349B /* Alkali */ = {
+		FC1CB8801E70575E00A8349B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				FC1CB85E1E70568400A8349B /* Alkali.h */,
-				FC1CB85F1E70568400A8349B /* Info.plist */,
+				FC1CB8851E705BD100A8349B /* iOS */,
+				FC1CB8861E705BD100A8349B /* macOS */,
+				FC1CB8871E705BD100A8349B /* Shared */,
+				FC1CB8881E705BD100A8349B /* tvOS */,
 			);
-			path = Alkali;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FC1CB8851E705BD100A8349B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		FC1CB8861E705BD100A8349B /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		FC1CB8871E705BD100A8349B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		FC1CB8881E705BD100A8349B /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = tvOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,7 +83,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC1CB8601E70568400A8349B /* Alkali.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +275,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.bvr.Alkali;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -270,6 +294,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.bvr.Alkali;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -293,6 +318,7 @@
 				FC1CB8651E70568400A8349B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
