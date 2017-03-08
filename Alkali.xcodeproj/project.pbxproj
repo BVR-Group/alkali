@@ -6,8 +6,14 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FCF426611E70607000821F28 /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF4265D1E705FBB00821F28 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		FC1CB85B1E70568400A8349B /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCF4265D1E705FBB00821F28 /* Alkali.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
+		FCF4265E1E705FBB00821F28 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +46,8 @@
 		FC1CB8801E70575E00A8349B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FCF4265D1E705FBB00821F28 /* Alkali.h */,
+				FCF4265E1E705FBB00821F28 /* Info.plist */,
 				FC1CB8851E705BD100A8349B /* iOS */,
 				FC1CB8861E705BD100A8349B /* macOS */,
 				FC1CB8871E705BD100A8349B /* Shared */,
@@ -83,6 +91,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF426611E70607000821F28 /* Alkali.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +278,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Alkali/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_OUTPUT_FORMAT = "same-as-input";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.bvr.Alkali;
@@ -288,7 +298,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Alkali/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_OUTPUT_FORMAT = "same-as-input";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.bvr.Alkali;
