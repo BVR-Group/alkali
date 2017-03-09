@@ -38,9 +38,11 @@ extension Window where T == Double {
 
 
     /// Returns a ```[Double]``` of the given length from this ```Window``` type.
-    public func buffer(of length: Length) -> [Double] {
-        var result = [Double](repeating: 0, count: Int(length))
-        function(&result, length, 0)
+    public func buffer(of length: Length) -> ValueArray<Double> {
+        let result = ValueArray<Double>(count: Int(length), repeatedValue: 0.0)
+        result.withUnsafeMutablePointer { (pointer) -> Void in
+            function(pointer, length, 0)
+        }
         return result
     }
 }
@@ -59,9 +61,11 @@ extension Window where T == Float {
     }
 
     /// Returns a ```[Float]``` of the given length from this ```Window``` type.
-    public func buffer(of length: Length) -> [Float] {
-        var result = [Float](repeating: 0, count: Int(length))
-        function(&result, length, 0)
+    public func buffer(of length: Length) -> ValueArray<Float> {
+        let result = ValueArray<Float>(count: Int(length), repeatedValue: 0.0)
+        result.withUnsafeMutablePointer { (pointer) -> Void in
+            function(pointer, length, 0)
+        }
         return result
     }
 }

@@ -11,6 +11,10 @@
 		FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
 		FC83A5001E718D24005A81A9 /* Upsurge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83A4FF1E718D24005A81A9 /* Upsurge.framework */; };
 		FC83A5041E718D98005A81A9 /* Upsurge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83A5031E718D98005A81A9 /* Upsurge.framework */; };
+		FC83A5091E719585005A81A9 /* ValueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A5081E719585005A81A9 /* ValueArray.swift */; };
+		FC83A50A1E719585005A81A9 /* ValueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A5081E719585005A81A9 /* ValueArray.swift */; };
+		FC83A50D1E719BD3005A81A9 /* Playgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */; };
+		FC83A50E1E719BD3005A81A9 /* Playgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */; };
 		FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
 		FCCB7B1B1E70808E0092E4FC /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF4265D1E705FBB00821F28 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -22,6 +26,8 @@
 		FC83A4F81E718B6D005A81A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC83A4FF1E718D24005A81A9 /* Upsurge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Upsurge.framework; path = Carthage/Build/iOS/Upsurge.framework; sourceTree = "<group>"; };
 		FC83A5031E718D98005A81A9 /* Upsurge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Upsurge.framework; path = Carthage/Build/Mac/Upsurge.framework; sourceTree = "<group>"; };
+		FC83A5081E719585005A81A9 /* ValueArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueArray.swift; sourceTree = "<group>"; };
+		FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playgrounds.swift; sourceTree = "<group>"; };
 		FCCB7B191E70803F0092E4FC /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		FCF4265D1E705FBB00821F28 /* Alkali.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
 		FCF4265E1E705FBB00821F28 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +102,8 @@
 		FC1CB8871E705BD100A8349B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				FC83A50B1E719BC6005A81A9 /* Utils */,
+				FC83A5071E719575005A81A9 /* Extensions */,
 				FCCB7B191E70803F0092E4FC /* Window.swift */,
 			);
 			path = Shared;
@@ -140,6 +148,22 @@
 				FC83A5031E718D98005A81A9 /* Upsurge.framework */,
 			);
 			name = macOS;
+			sourceTree = "<group>";
+		};
+		FC83A5071E719575005A81A9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FC83A5081E719585005A81A9 /* ValueArray.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FC83A50B1E719BC6005A81A9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,7 +319,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC83A50D1E719BD3005A81A9 /* Playgrounds.swift in Sources */,
 				FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */,
+				FC83A5091E719585005A81A9 /* ValueArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +329,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC83A50E1E719BD3005A81A9 /* Playgrounds.swift in Sources */,
 				FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */,
+				FC83A50A1E719585005A81A9 /* ValueArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
