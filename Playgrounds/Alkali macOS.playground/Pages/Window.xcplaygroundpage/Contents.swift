@@ -2,7 +2,7 @@
 import Foundation
 import Alkali
 
-let size: UInt = 21
+let size: UInt = 32
 
 Window<Float>.hamming.buffer(of: size).map { $0 }
 Window<Double>.hamming.buffer(of: size).map { $0 }

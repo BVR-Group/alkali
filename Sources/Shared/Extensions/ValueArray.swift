@@ -21,7 +21,7 @@ extension ValueArray where Element == Double {
     }
 
     public convenience init(rampingThrough range: ClosedRange<Element>, by increase: Element) {
-        let n = Int(((range.upperBound - range.lowerBound) / increase).rounded())
+        let n = Int(((range.upperBound - range.lowerBound) / increase))
         let result = ValueArray<Element>(zeros: n)
         var increase = increase
         var from = range.lowerBound
@@ -41,7 +41,7 @@ extension ValueArray where Element == Float {
     }
 
     public convenience init(rampingThrough range: ClosedRange<Element>, by increase: Element) {
-        let n = Int(((range.upperBound - range.lowerBound) / increase).rounded())
+        let n = Int(((range.upperBound - range.lowerBound) / increase))
         let result = ValueArray<Element>(zeros: n)
         var increase = increase
         var from = range.lowerBound
