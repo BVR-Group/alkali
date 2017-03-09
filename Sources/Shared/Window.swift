@@ -8,12 +8,7 @@
 
 import Foundation
 import Accelerate
-
-
-public enum Precision {
-    case float
-    case double
-}
+import Upsurge
 
 public enum Window<T: ExpressibleByFloatLiteral> {
     public typealias Length = vDSP_Length
