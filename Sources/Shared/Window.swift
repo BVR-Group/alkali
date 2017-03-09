@@ -10,6 +10,9 @@ import Foundation
 import Accelerate
 import Upsurge
 
+
+// FIXME: I'm not sure I like this interface...
+
 public enum Window<T: ExpressibleByFloatLiteral> {
     public typealias Length = vDSP_Length
 
