@@ -20,6 +20,10 @@ extension ValueArray where Element == Double {
         self.init(count: n, repeatedValue: 0.0)
     }
 
+    public convenience init(ones n: Int) {
+        self.init(count: n, repeatedValue: 1.0)
+    }
+
     /// Creates a ```ValueArray``` of ```Double``` using Accelerate, through a ```ClosedRange```.
     public convenience init(rampingThrough range: ClosedRange<Element>, by increment: Element) {
         let n = Int(((range.upperBound - range.lowerBound) / increment))
@@ -39,6 +43,10 @@ extension ValueArray where Element == Float {
 
     public convenience init(zeros n: Int) {
         self.init(count: n, repeatedValue: 0.0)
+    }
+
+    public convenience init(ones n: Int) {
+        self.init(count: n, repeatedValue: 1.0)
     }
 
     /// Creates a ```ValueArray``` of ```Float``` using Accelerate, through a ```ClosedRange```.
