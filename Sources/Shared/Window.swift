@@ -10,64 +10,83 @@ import Foundation
 import Accelerate
 import Upsurge
 
-
-// FIXME: I'm not sure I like this interface...
-
-public enum Window<T: ExpressibleByFloatLiteral> {
+public enum Window {
     public typealias Length = vDSP_Length
 
     /// Represents a Hanning window
     case hanning
 
-    /// Represents a Hanning window
+    /// Represents a Hamming window
     case hamming
 
+    /// Represents a Blackman window
     case blackman
 
-}
+    case gaussian
 
-extension Window where T == Double {
+    case bartlett
 
-    var function: (UnsafeMutablePointer<T>, vDSP_Length, Int32) -> Void {
-        switch self {
-        case .hamming:
-            return vDSP_hamm_windowD
-        case .hanning:
-            return vDSP_hann_windowD
-        case .blackman:
-            return vDSP_blkman_windowD
-        }
-    }
-
-
-    /// Returns a ```[Double]``` of the given length from this ```Window``` type.
-    public func buffer(of length: Length) -> ValueArray<Double> {
+    public func buffer(_ length: Length) -> ValueArray<Double> {
         let result = ValueArray<Double>(count: Int(length), repeatedValue: 0.0)
         result.withUnsafeMutablePointer { (pointer) -> Void in
-            function(pointer, length, 0)
+            switch self {
+            case .hamming:
+                vDSP_hamm_windowD(pointer, length, 0)
+            case .hanning:
+                vDSP_hann_windowD(pointer, length, 0)
+            case .blackman:
+                vDSP_blkman_windowD(pointer, length, 0)
+            default:
+                return
+            }
+        }
+
+        let N = Double(length)
+        switch self {
+        case .gaussian:
+            for i in 0..<Int(length) {
+                let I = Double(i)
+                result[i] = exp(-1.0 * (2.0 * I - N + 1.0) * (2.0 * I - N + 1.0) / ((N - 1.0) * (N - 1.0)))
+            }
+        case .bartlett:
+            for i in 0..<Int(length) {
+                let I = Double(i)
+                result[i] = 1.0 - abs((2.0 * I - N + 1.0) / (N - 1.0))
+            }
+        default:
+            break
         }
         return result
     }
-}
 
-extension Window where T == Float {
-
-    var function: (UnsafeMutablePointer<T>, vDSP_Length, Int32) -> Void {
-        switch self {
-        case .hamming:
-            return vDSP_hamm_window
-        case .hanning:
-            return vDSP_hann_window
-        case .blackman:
-            return vDSP_blkman_window
-        }
-    }
-
-    /// Returns a ```[Float]``` of the given length from this ```Window``` type.
-    public func buffer(of length: Length) -> ValueArray<Float> {
+    public func buffer(_ length: Length) -> ValueArray<Float> {
         let result = ValueArray<Float>(count: Int(length), repeatedValue: 0.0)
         result.withUnsafeMutablePointer { (pointer) -> Void in
-            function(pointer, length, 0)
+            switch self {
+            case .hamming:
+                vDSP_hamm_window(pointer, length, 0)
+            case .hanning:
+                vDSP_hann_window(pointer, length, 0)
+            case .blackman:
+                vDSP_blkman_window(pointer, length, 0)
+            default:
+                return
+            }
+        }
+        let N = Float(length)
+        switch self {
+        case .gaussian:
+            for i in 0..<Int(length) {
+                let I = Float(i)
+                result[i] = expf(-1.0 * (2.0 * I - N + 1.0) * (2.0 * I - N + 1.0) / ((N - 1.0) * (N - 1.0)))
+            }
+        case .bartlett:
+            for i in 0..<Int(length) {
+                let I = Float(i)
+                result[i] = 1.0 - abs((2.0 * I - N + 1.0) / (N - 1.0))
+            }
+        default:
+            break
         }
         return result
     }

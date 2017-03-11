@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC83A4F41E718B6D005A81A9"
-               BuildableName = "Alkali macOS.framework"
+               BuildableName = "Alkali.framework"
                BlueprintName = "Alkali macOS"
                ReferencedContainer = "container:Alkali.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC83A4F41E718B6D005A81A9"
-            BuildableName = "Alkali macOS.framework"
+            BuildableName = "Alkali.framework"
             BlueprintName = "Alkali macOS"
             ReferencedContainer = "container:Alkali.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC83A4F41E718B6D005A81A9"
-            BuildableName = "Alkali macOS.framework"
+            BuildableName = "Alkali.framework"
             BlueprintName = "Alkali macOS"
             ReferencedContainer = "container:Alkali.xcodeproj">
          </BuildableReference>

@@ -20,10 +20,11 @@ extension ValueArray where Element == Double {
         self.init(count: n, repeatedValue: 0.0)
     }
 
-    public convenience init(rampingThrough range: ClosedRange<Element>, by increase: Element) {
-        let n = Int(((range.upperBound - range.lowerBound) / increase))
+    /// Creates a ```ValueArray``` of ```Double``` using Accelerate, through a ```ClosedRange```.
+    public convenience init(rampingThrough range: ClosedRange<Element>, by increment: Element) {
+        let n = Int(((range.upperBound - range.lowerBound) / increment))
         let result = ValueArray<Element>(zeros: n)
-        var increase = increase
+        var increase = increment
         var from = range.lowerBound
 
         result.withUnsafeMutablePointer { (pointer) -> Void in
@@ -40,10 +41,11 @@ extension ValueArray where Element == Float {
         self.init(count: n, repeatedValue: 0.0)
     }
 
-    public convenience init(rampingThrough range: ClosedRange<Element>, by increase: Element) {
-        let n = Int(((range.upperBound - range.lowerBound) / increase))
+    /// Creates a ```ValueArray``` of ```Float``` using Accelerate, through a ```ClosedRange```.
+    public convenience init(rampingThrough range: ClosedRange<Element>, by increment: Element) {
+        let n = Int(((range.upperBound - range.lowerBound) / increment))
         let result = ValueArray<Element>(zeros: n)
-        var increase = increase
+        var increase = increment
         var from = range.lowerBound
 
         result.withUnsafeMutablePointer { (pointer) -> Void in
