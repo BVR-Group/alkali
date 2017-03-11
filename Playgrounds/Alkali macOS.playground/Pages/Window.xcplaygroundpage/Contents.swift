@@ -5,6 +5,12 @@ import Upsurge
 
 let size: Window.Length = 32
 
+let cosWindow: DoubleBuffer = Window.cosine.buffer(size)
+cosWindow.map { $0 }
+
+let rectWindow: DoubleBuffer = Window.rectangle.buffer(size)
+rectWindow.map { $0 }
+
 let lancWindow: DoubleBuffer = Window.lanczos.buffer(size)
 lancWindow.map { $0 }
 

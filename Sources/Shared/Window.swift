@@ -40,6 +40,8 @@ public enum Window {
 
     case rectangle
 
+    case cosine
+
     /// Returns a ```DoubleBuffer``` of a given ```Length``` and type.
     public func buffer(_ length: Length) -> DoubleBuffer {
         let result = DoubleBuffer(count: Int(length), repeatedValue: 0.0)
@@ -84,6 +86,11 @@ public enum Window {
         case .rectangle:
             for i in R {
                 result[i] = 1.0
+            }
+        case .cosine:
+            for i in R {
+                let I = Double(i)
+                result[i] = sin(Double.pi * I / (N - 1))
             }
         default:
             break
@@ -136,6 +143,11 @@ public enum Window {
         case .rectangle:
             for i in R {
                 result[i] = 1.0
+            }
+        case .cosine:
+            for i in R {
+                let I = Float(i)
+                result[i] = sinf(Float.pi * I / (N - 1))
             }
         default:
             break
