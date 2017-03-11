@@ -26,8 +26,9 @@ public enum Window {
 
     case bartlett
 
-    public func buffer(_ length: Length) -> ValueArray<Double> {
-        let result = ValueArray<Double>(count: Int(length), repeatedValue: 0.0)
+    /// Returns a ```DoubleBuffer``` of a given ```Length``` and type.
+    public func buffer(_ length: Length) -> DoubleBuffer {
+        let result = DoubleBuffer(count: Int(length), repeatedValue: 0.0)
         result.withUnsafeMutablePointer { (pointer) -> Void in
             switch self {
             case .hamming:
@@ -59,8 +60,9 @@ public enum Window {
         return result
     }
 
-    public func buffer(_ length: Length) -> ValueArray<Float> {
-        let result = ValueArray<Float>(count: Int(length), repeatedValue: 0.0)
+    /// Returns a ```FloatBuffer``` of a given ```Length``` and type.
+    public func buffer(_ length: Length) -> FloatBuffer {
+        let result = FloatBuffer(count: Int(length), repeatedValue: 0.0)
         result.withUnsafeMutablePointer { (pointer) -> Void in
             switch self {
             case .hamming:
@@ -73,6 +75,7 @@ public enum Window {
                 return
             }
         }
+
         let N = Float(length)
         switch self {
         case .gaussian:
