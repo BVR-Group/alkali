@@ -57,4 +57,6 @@ analyzer.process(frames: combined)
 analyzer.magnitude().map({ $0 })
 analyzer.zeroCrossingRate()
 
+var
+
 //: [Next](@next)
