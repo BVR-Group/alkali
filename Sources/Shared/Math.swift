@@ -53,13 +53,13 @@ public enum Math {
 }
 
 extension Amp {
-    public func dBs() -> Decibel {
+    public func toDecibels() -> Decibel {
         return Math.dB(from: self)
     }
 }
 
 extension Decibel {
-    public func amps() -> Amp {
+    public func toAmps() -> Amp {
         return Math.amp(from: self)
     }
 }

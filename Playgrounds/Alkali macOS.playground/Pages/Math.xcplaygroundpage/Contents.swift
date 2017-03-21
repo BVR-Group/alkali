@@ -4,12 +4,10 @@ import Foundation
 import Alkali
 import Upsurge
 
-let amp = 120.0
-let db = Math.dB(from: amp)
+let amps = 120.0
+let db = Math.dB(from: amps)
 
-db.amps()
-amp.dBs()
-
-
+db.toAmps()
+amps.toDecibels()
 
 //: [Next](@next)
