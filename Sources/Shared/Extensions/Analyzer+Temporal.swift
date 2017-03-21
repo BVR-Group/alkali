@@ -31,6 +31,6 @@ extension Analyzer {
         guard let current = currentBuffer else {
             fatalError("No buffer to analyze!")
         }
-        return powf(Alkali.energy(current), 0.67)
+        return powf(Math.energy(current), 0.67)
     }
 }

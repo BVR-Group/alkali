@@ -25,6 +25,8 @@
 		FC83A50A1E719585005A81A9 /* ValueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A5081E719585005A81A9 /* ValueArray.swift */; };
 		FC83A50D1E719BD3005A81A9 /* Playgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */; };
 		FC83A50E1E719BD3005A81A9 /* Playgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */; };
+		FCA527CB1E7F0E470084D550 /* Analyzer+Spectral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */; };
+		FCA527CC1E7F0E470084D550 /* Analyzer+Spectral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */; };
 		FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
 		FCCB7B1B1E70808E0092E4FC /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF4265D1E705FBB00821F28 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -43,6 +45,7 @@
 		FC83A5031E718D98005A81A9 /* Upsurge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Upsurge.framework; path = Carthage/Build/Mac/Upsurge.framework; sourceTree = "<group>"; };
 		FC83A5081E719585005A81A9 /* ValueArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueArray.swift; sourceTree = "<group>"; };
 		FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playgrounds.swift; sourceTree = "<group>"; };
+		FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Analyzer+Spectral.swift"; sourceTree = "<group>"; };
 		FCCB7B191E70803F0092E4FC /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		FCF4265D1E705FBB00821F28 /* Alkali.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
 		FCF4265E1E705FBB00821F28 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +177,7 @@
 			children = (
 				FC83A5081E719585005A81A9 /* ValueArray.swift */,
 				FC194D1E1E7EC0150080F245 /* Analyzer+Temporal.swift */,
+				FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -339,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA527CB1E7F0E470084D550 /* Analyzer+Spectral.swift in Sources */,
 				FC83A50D1E719BD3005A81A9 /* Playgrounds.swift in Sources */,
 				FC194D1C1E7EB7B10080F245 /* Analyzer.swift in Sources */,
 				FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */,
@@ -354,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA527CC1E7F0E470084D550 /* Analyzer+Spectral.swift in Sources */,
 				FC83A50E1E719BD3005A81A9 /* Playgrounds.swift in Sources */,
 				FC194D1D1E7EB7B10080F245 /* Analyzer.swift in Sources */,
 				FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */,

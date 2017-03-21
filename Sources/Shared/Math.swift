@@ -9,18 +9,31 @@
 import Foundation
 import Upsurge
 
-func energy<T: LinearType>(_ x: T) -> Double where T.Element == Double {
-    return innerProduct(x, x)
-}
+public enum Math {
+    public static let silenceCutoff = 1e-9
+    public static let silenceCutoffdB = -90
 
-func energy<T: LinearType>(_ x: T) -> Float where T.Element == Float {
-    return innerProduct(x, x)
-}
+    public static func isPOT(_ value: Int) -> Bool {
+        return (value == 1 || (value & (value - 1)) == 0)
+    }
 
-func innerProduct<T: LinearType>(_ x: T, _ y: T) -> Double where T.Element == Double {
-    return sum(x * y)
-}
+    public static func energy<T: LinearType>(_ x: T) -> Double where T.Element == Double {
+        return innerProduct(x, x)
+    }
 
-func innerProduct<T: LinearType>(_ x: T, _ y: T) -> Float where T.Element == Float {
-    return sum(x * y)
+    public static func energy<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+        return innerProduct(x, x)
+    }
+
+    public static func innerProduct<T: LinearType>(_ x: T, _ y: T) -> Double where T.Element == Double {
+        return sum(x * y)
+    }
+
+    public static func innerProduct<T: LinearType>(_ x: T, _ y: T) -> Float where T.Element == Float {
+        return sum(x * y)
+    }
+
+    public static func instantPower<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+        return energy(x) / Float(x.count)
+    }
 }
