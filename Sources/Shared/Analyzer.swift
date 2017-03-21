@@ -12,9 +12,17 @@ import Upsurge
 public final class Analyzer: FFT {
     internal var currentBuffer: FloatBuffer? = nil
 
+    func mirror(_ buffer: FloatBuffer) {
+        let half = buffer.count / 2
+        buffer[half...buffer.endIndex] = ValueArraySlice<Float>(base: FloatBuffer(buffer[buffer.startIndex..<half].reversed()), startIndex: buffer.startIndex, endIndex: half, step: 1)
+    }
+
     public func process(frames: FloatBuffer) {
         currentBuffer = frames
         super.transform(buffer: frames)
+
+        mirror(complex.real)
+        mirror(complex.imaginary)
     }
 }
 

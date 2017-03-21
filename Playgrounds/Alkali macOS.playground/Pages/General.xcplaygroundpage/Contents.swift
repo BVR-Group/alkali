@@ -54,9 +54,10 @@ combined.map { $0 }
 let analyzer = Analyzer(size: bufferS.count, sampleRate: 44100.0)
 
 analyzer.process(frames: combined)
+analyzer.real.map { $0 }
+
 analyzer.magnitude().map({ $0 })
 analyzer.zeroCrossingRate()
 
-var
 
 //: [Next](@next)
