@@ -38,18 +38,14 @@ for i in 0..<bufferV.count {
     let phi = Float(0 / 44100.0)
     bufferV[i] = sinf(Float(i) * phi * Float.pi) > 0 ? -1 : 1
 }
-bufferV.map { $0 }
+
+bufferV.map { $0 } // Inspect me to see the signal!
 bufferU.map { $0 }
-
 bufferT.map { $0 }
-
-
 bufferS.map { $0 }
 
 let combined = (bufferT + bufferS + bufferU + bufferV)
-combined.map { $0 }
-
-
+combined.map { $0 } //Inspect me to the see the signal!
 
 let analyzer = Analyzer(size: bufferS.count, sampleRate: 44100.0)
 analyzer.process(frames: combined)
