@@ -11,3 +11,6 @@ import Upsurge
 
 public typealias DoubleBuffer = ValueArray<Double>
 public typealias FloatBuffer  = ValueArray<Float>
+
+public typealias Decibel = FloatLiteralType
+public typealias Amp = FloatLiteralType
