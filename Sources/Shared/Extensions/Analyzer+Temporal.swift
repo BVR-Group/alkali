@@ -13,7 +13,7 @@ extension Analyzer {
 
     /// Returns the zero-crossing rate of the current buffer in the analyzer. A high zero-crossing
     /// rate is a good indicator of a noisey signal.
-
+    ///
     public func zeroCrossingRate() -> Int {
         guard let current = currentBuffer else {
             fatalError("No buffer to analyze!")
@@ -26,7 +26,6 @@ extension Analyzer {
 
     /// Returns the Steven's power law value of "Loudness" (energy ^ 0.67).
     ///
-
     public func loudness() -> Float {
         guard let current = currentBuffer else {
             fatalError("No buffer to analyze!")
