@@ -18,8 +18,8 @@ public class FFT {
         public var dspSplitComplex: DSPSplitComplex
 
         public init(_ size: Int = 0) {
-            real      = FloatBuffer(zeros: size / 2)
-            imaginary = FloatBuffer(zeros: size / 2)
+            real      = FloatBuffer(zeros: size)
+            imaginary = FloatBuffer(zeros: size)
             dspSplitComplex = withPointers(&real, &imaginary) { (realPtr, imagPtr) -> DSPSplitComplex in
                 return DSPSplitComplex(realp: realPtr, imagp: imagPtr)
             }
@@ -28,14 +28,16 @@ public class FFT {
 
     public typealias Length = vDSP_Length
 
-    internal var n: Int          = 0
-    internal var halfN: Int      = 0
-    internal var log2N: Float    = 0
-    public var sampleRate: Float    = 0
+    internal var n: Int             = 0
+    internal var halfN: Int         = 0
+    internal var log2N: Float       = 0
+    public   var sampleRate: Float  = 0
     
     public var nyquist: Float {
         return sampleRate / 2.0
     }
+
+    public var window: Window
 
     public var complex = FFT.Complex()
 
@@ -49,7 +51,8 @@ public class FFT {
 
     fileprivate var setup: FFTSetup? = nil
 
-    public init(size: Int, sampleRate: Float) {
+    public init(size: Int, sampleRate: Float, window: Window = .hanning) {
+        self.window = window
         resize(to: size, and: sampleRate)
     }
 
@@ -83,30 +86,33 @@ public class FFT {
         setup = fftSetup
     }
 
+    internal func mirror(_ buffer: FloatBuffer) {
+        let half = buffer.count / 2
+        buffer[half...buffer.endIndex] = ValueArraySlice<Float>(base: FloatBuffer(buffer[buffer.startIndex..<half].reversed()), startIndex: buffer.startIndex, endIndex: half, step: 1)
+    }
+
     internal func transform(buffer: FloatBuffer) {
+        var tempBuffer = FloatBuffer(zeros: n)
+        let windowBuffer: FloatBuffer = window.buffer(Length(n))
+        tempBuffer = buffer * windowBuffer
+
         guard let fftSetup = setup else {
             fatalError("FFT not setup!")
         }
 
-        buffer.pointer.withMemoryRebound(to: DSPComplex.self, capacity: 1) { ptr in
+        tempBuffer.pointer.withMemoryRebound(to: DSPComplex.self, capacity: 1) { ptr in
             vDSP_ctoz(ptr, 2, &complex.dspSplitComplex, 1, Length(halfN))
             vDSP_fft_zrip(fftSetup, &complex.dspSplitComplex, 1, Length(log2N), FFTDirection(FFT_FORWARD))
         }
 
-        complex.real /= 2.0
-        complex.imaginary /= 2.0
+        complex.real[halfN] = complex.imaginary[0]
+        complex.imaginary[halfN] = 0.0
+        complex.imaginary[0] = 0.0
 
-// TODO: Not sure if this should be here.
-//
-//        withPointer(&magnitudes) { mPtr in
-//            vDSP_zvmags(&complex.dspSplitComplex, 1, mPtr, 1, Length(halfN))
-//        }
+        complex.real *= 0.5
+        complex.imaginary *= 0.5
 
-//        guard let winBuff: FloatBuffer = self.window?.buffer(Length(self.n)) else {
-//            return
-//        }
-//        
-//        real      *= winBuff
-//        imaginary *= winBuff
+        mirror(complex.real)
+        mirror(complex.imaginary)
     }
 }

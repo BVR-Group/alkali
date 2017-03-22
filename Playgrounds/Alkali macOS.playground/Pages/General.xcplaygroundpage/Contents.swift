@@ -7,10 +7,10 @@ import Accelerate
 import Alkali
 import Upsurge
 
-var bufferS: FloatBuffer = FloatBuffer(count: 1024, repeatedValue: 0)
-var bufferT: FloatBuffer = FloatBuffer(count: 1024, repeatedValue: 0)
-var bufferU: FloatBuffer = FloatBuffer(count: 1024, repeatedValue: 0)
-var bufferV: FloatBuffer = FloatBuffer(count: 1024, repeatedValue: 0)
+var bufferS: FloatBuffer = FloatBuffer(count: 256, repeatedValue: 0)
+var bufferT: FloatBuffer = FloatBuffer(count: 256, repeatedValue: 0)
+var bufferU: FloatBuffer = FloatBuffer(count: 256, repeatedValue: 0)
+var bufferV: FloatBuffer = FloatBuffer(count: 256, repeatedValue: 0)
 
 //bufferS[1] = 1
 func fftToHz(fIndex: Int, size: Int, nyquist: Float) -> Float {
@@ -52,9 +52,9 @@ combined.map { $0 }
 
 
 let analyzer = Analyzer(size: bufferS.count, sampleRate: 44100.0)
-
 analyzer.process(frames: combined)
 analyzer.real.map { $0 }
+analyzer.imaginary.map { $0 }
 
 analyzer.magnitude().map({ $0 })
 analyzer.zeroCrossingRate()
