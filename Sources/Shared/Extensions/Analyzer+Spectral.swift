@@ -11,16 +11,24 @@ import Upsurge
 
 extension Analyzer {
 
+    /// Computes the flatness of the magnitude spectrum.
+    ///
+    public func flatness() -> Float {
+        return Math.flatness(magnitudeSpectrum)
+    }
+
+    /// Computes the spectral centroid of the magnitude spectrum.
+    ///
+    public func centroid() -> Float {
+        return Math.centroid(of: magnitudeSpectrum)
+    }
+
     /// Computes the root mean square (RMS) of the current buffer.
     ///
     public func rootMeanSquare() -> Float {
         guard let currentBuffer = currentBuffer else {
             fatalError("No buffer to analyze!")
         }
-        var result: Float = 0
-        currentBuffer.withUnsafePointer { ptr in
-            vDSP_rmsqv(ptr, 1, &result, Length(self.n))
-        }
-        return result
+        return Math.rootMeanSquare(currentBuffer)
     }
 }

@@ -49,6 +49,11 @@ combined.map { $0 } //Inspect me to the see the signal!
 
 let analyzer = Analyzer(size: bufferS.count, sampleRate: 44100.0)
 analyzer.process(frames: combined)
+
+analyzer.real.startIndex
+analyzer.real.halfIndex
+analyzer.real.endIndex
+
 analyzer.real.map { $0 }
 analyzer.imaginary.map { $0 }
 
@@ -57,6 +62,12 @@ analyzer.magnitudeSpectrum.map { $0 }
 analyzer.nyquist
 
 analyzer.zeroCrossingRate()
+
+analyzer.rootMeanSquare()
+
+analyzer.flatness()
+
+analyzer.centroid()
 
 
 //: [Next](@next)

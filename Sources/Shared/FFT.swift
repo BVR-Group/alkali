@@ -90,11 +90,6 @@ public class FFT {
         setup = fftSetup
     }
 
-    internal func mirror(_ buffer: FloatBuffer) {
-        let half = buffer.count / 2
-        buffer[half...buffer.endIndex] = ValueArraySlice<Float>(base: FloatBuffer(buffer[buffer.startIndex..<half].reversed()), startIndex: buffer.startIndex, endIndex: half, step: 1)
-    }
-
     internal func transform(buffer: FloatBuffer) {
         var tempBuffer = FloatBuffer(zeros: n)
         let windowBuffer: FloatBuffer = window.buffer(Length(n))
@@ -123,8 +118,8 @@ public class FFT {
 
         // Make the complex results symetrical instead of doing it in
         // the various algorithms (questionable decision)...
-        mirror(complex.real)
-        mirror(complex.imaginary)
+        complex.real.mirror()
+        complex.imaginary.mirror()
 
         withPointer(&magnitudeSpectrum) { mPtr in
             // Square all of the points in the complex...
