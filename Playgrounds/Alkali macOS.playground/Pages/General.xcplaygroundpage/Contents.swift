@@ -56,7 +56,10 @@ analyzer.process(frames: combined)
 analyzer.real.map { $0 }
 analyzer.imaginary.map { $0 }
 
-analyzer.magnitude().map({ $0 })
+analyzer.magnitudeSpectrum.map { $0 }
+
+analyzer.nyquist
+
 analyzer.zeroCrossingRate()
 
 

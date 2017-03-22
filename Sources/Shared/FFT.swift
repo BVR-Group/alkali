@@ -49,12 +49,9 @@ public class FFT {
         return complex.imaginary
     }
 
-    fileprivate var setup: FFTSetup? = nil
+    public var magnitudeSpectrum = FloatBuffer()
 
-    public init(size: Int, sampleRate: Float, window: Window = .hanning) {
-        self.window = window
-        resize(to: size, and: sampleRate)
-    }
+    fileprivate var setup: FFTSetup? = nil
 
     fileprivate func upperPOT(_ value: Int) -> Int {
         var v = value
@@ -68,15 +65,22 @@ public class FFT {
         return v
     }
 
+    public init(size: Int, sampleRate: Float, window: Window = .hanning) {
+        self.window = window
+        resize(to: size, and: sampleRate)
+    }
+
     public func resize(to length: Int, and sampleRate: Float) {
         if let prexistingSetup = setup {
             vDSP_destroy_fftsetup(prexistingSetup)
         }
 
         self.n      = upperPOT(length)
-        self.log2N  = roundf(log2f(Float(n)))
+        self.log2N  = log2f(Float(n))
         self.halfN  = n / 2
         self.sampleRate = sampleRate
+
+        self.magnitudeSpectrum = FloatBuffer(zeros: self.halfN)
 
         complex = FFT.Complex(halfN)
 
@@ -114,5 +118,11 @@ public class FFT {
 
         mirror(complex.real)
         mirror(complex.imaginary)
+
+        withPointer(&magnitudeSpectrum) { mPtr in
+            vDSP_zvmags(&complex.dspSplitComplex, 1, mPtr, 1, Length(halfN))
+        }
+
+        magnitudeSpectrum = sqrt(magnitudeSpectrum)
     }
 }
