@@ -75,9 +75,9 @@ public class FFT {
             vDSP_destroy_fftsetup(prexistingSetup)
         }
 
-        self.n      = upperPOT(length)
-        self.log2N  = log2f(Float(n))
-        self.halfN  = n / 2
+        self.n          = upperPOT(length)
+        self.log2N      = log2f(Float(n))
+        self.halfN      = n / 2
         self.sampleRate = sampleRate
 
         self.magnitudeSpectrum = FloatBuffer(zeros: self.halfN)
@@ -105,24 +105,33 @@ public class FFT {
         }
 
         tempBuffer.pointer.withMemoryRebound(to: DSPComplex.self, capacity: 1) { ptr in
+            // Pack the audio buffer into a complex...
             vDSP_ctoz(ptr, 2, &complex.dspSplitComplex, 1, Length(halfN))
+
+            // Run the forward FFT using the prior setup...
             vDSP_fft_zrip(fftSetup, &complex.dspSplitComplex, 1, Length(log2N), FFTDirection(FFT_FORWARD))
         }
 
-        complex.real[halfN] = complex.imaginary[0]
+        // Prepare the complex to be mirrored and correct wrong values coming from the accelerate FFT...
+        complex.real[halfN]      = complex.imaginary[0]
         complex.imaginary[halfN] = 0.0
-        complex.imaginary[0] = 0.0
+        complex.imaginary[0]     = 0.0
 
-        complex.real *= 0.5
+        // Halve the values to achieve appropriate scale...
+        complex.real      *= 0.5
         complex.imaginary *= 0.5
 
+        // Make the complex results symetrical instead of doing it in
+        // the various algorithms (questionable decision)...
         mirror(complex.real)
         mirror(complex.imaginary)
 
         withPointer(&magnitudeSpectrum) { mPtr in
+            // Square all of the points in the complex...
             vDSP_zvmags(&complex.dspSplitComplex, 1, mPtr, 1, Length(halfN))
         }
 
+        // sqrt them all to get the appropriate values for the spectrum
         magnitudeSpectrum = sqrt(magnitudeSpectrum)
     }
 }
