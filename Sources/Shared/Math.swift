@@ -35,9 +35,32 @@ public enum Math {
         return sum(x * y)
     }
 
+    /// Computes the rolloff of a ```ValueArray```. This is the Nth percentile of the power spectral distribution.
+    ///
+    public static func rolloff<T: LinearType>(_ value: T, cutoffPercent n: Float = 0.85) -> Float where T.Element == Float {
+
+        guard value.count > 2 else {
+            fatalError("Value must have more than two elements!")
+        }
+        let totalEnergy = sum(value)
+        let threshold = totalEnergy * n
+
+        var rolloffSum: Float = 0
+        var index: Int = 0
+
+        for i in 0..<value.count {
+            rolloffSum += value[i]
+            if rolloffSum > threshold {
+                index = i
+                break
+            }
+        }
+        return Float(index) / Float(value.count)
+    }
+
     /// Computes the centroid of a ```ValueArray```.
     ///
-    public static func centroid(of value: ValueArray<Float>) -> Float {
+    public static func centroid(_ value: ValueArray<Float>) -> Float {
         let sumOfAmplitudes = sum(value)
         let weights         = FloatBuffer(rampingThrough: 0.0...Float(value.endIndex), by: 1.0)
         let weightedSum     = sum(value * weights)
