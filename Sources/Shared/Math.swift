@@ -65,6 +65,28 @@ public enum Math {
         return rmsq(x)
     }
 
+    /// Computes the power mean of an array with a given ```Float``` power.
+    ///
+    /// If power = -1, the Power Mean is equal to the Harmonic Mean, if power = 0, the Power Mean is
+    /// equal to the Geometric Mean, if power = 1, the Power Mean is equal to the Arithmetic Mean,
+    /// if p = 2, the Power Mean is equal to the Root Mean Square.
+    ///
+    /// - attention:
+    /// Adapted from [Essentia](http://essentia.upf.edu/)
+    ///
+    public static func powerMean(_ x: FloatBuffer, power: Float) -> Float {
+        if power == 0 {
+            return Math.geometricMean(x)
+        } else {
+            var results = x
+            let powers = FloatBuffer(count: x.count, repeatedValue: power)
+            withPointers(&results, powers) { rp, pp in
+                vvpowf(rp, pp, rp, [Int32(x.count)])
+            }
+            return powf(mean(results), 1.0 / power)
+        }
+    }
+
     public static func instantPower<T: LinearType>(_ x: T) -> Float where T.Element == Float {
         return energy(x) / Float(x.count)
     }
@@ -76,8 +98,6 @@ public enum Math {
             return 0
         }
     }
-
-
 
     public static func dB(from amp: Amp) -> Decibel {
         return 20 * log10(amp)

@@ -29,6 +29,8 @@
 		FCA527CC1E7F0E470084D550 /* Analyzer+Spectral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */; };
 		FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
 		FCCB7B1B1E70808E0092E4FC /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF4265D1E705FBB00821F28 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FCF584641E8417C4003868D7 /* Analyzer+Statistical.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF584631E8417C4003868D7 /* Analyzer+Statistical.swift */; };
+		FCF584651E8417C4003868D7 /* Analyzer+Statistical.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF584631E8417C4003868D7 /* Analyzer+Statistical.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,7 @@
 		FCCB7B191E70803F0092E4FC /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		FCF4265D1E705FBB00821F28 /* Alkali.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
 		FCF4265E1E705FBB00821F28 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCF584631E8417C4003868D7 /* Analyzer+Statistical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Analyzer+Statistical.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,7 @@
 				FC83A5081E719585005A81A9 /* ValueArray.swift */,
 				FC194D1E1E7EC0150080F245 /* Analyzer+Temporal.swift */,
 				FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */,
+				FCF584631E8417C4003868D7 /* Analyzer+Statistical.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +356,7 @@
 				FC194D1F1E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */,
 				FC35F7D71E7479AB00FE5DA1 /* Types.swift in Sources */,
 				FC2CD8851E7ECD1800920C0A /* Math.swift in Sources */,
+				FCF584641E8417C4003868D7 /* Analyzer+Statistical.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +373,7 @@
 				FC194D201E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */,
 				FC35F7D81E7479AB00FE5DA1 /* Types.swift in Sources */,
 				FC2CD8861E7ECD1800920C0A /* Math.swift in Sources */,
+				FCF584651E8417C4003868D7 /* Analyzer+Statistical.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
