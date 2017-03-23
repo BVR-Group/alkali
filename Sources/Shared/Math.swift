@@ -80,11 +80,23 @@ public enum Math {
         return geometricMean(x + 1) / mean(x + 1)
     }
 
+    public static func median<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+        return sum(x) / Float(x.count)
+    }
+
+    public static func median<T: LinearType>(_ x: T) -> Double where T.Element == Double {
+        return sum(x) / Double(x.count)
+    }
+
+    public static func mean<T: LinearType>(_ x: T) -> T.Element {
+        return mean(x)
+    }
+
     public static func geometricMean<T: LinearType>(_ x: T) -> Float where T.Element == Float {
         return exp(sum(log(x)) / Float(x.count))
     }
 
-    public static func rootMeanSquare<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+    public static func rootMeanSquare<T: LinearType>(_ x: T) -> T.Element where T.Element == Float {
         return rmsq(x)
     }
 
