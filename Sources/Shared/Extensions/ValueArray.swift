@@ -62,4 +62,19 @@ extension ValueArray where Element == Float {
 
         self.init(result)
     }
+
+    public var halfIndex: ValueArray.Index {
+        return self.endIndex / 2
+    }
+
+    public var firstHalf: ValueArraySlice<Element> {
+        return self[startIndex..<halfIndex]
+    }
+
+    public func mirror() {
+        self[halfIndex...endIndex] = ValueArraySlice<Element>(base: FloatBuffer(self[startIndex..<halfIndex].reversed()),
+                                                              startIndex: startIndex,
+                                                              endIndex: halfIndex,
+                                                              step: 1)
+    }
 }
