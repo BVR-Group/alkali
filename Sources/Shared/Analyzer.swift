@@ -17,13 +17,3 @@ public final class Analyzer: FFT {
         super.transform(buffer: frames)
     }
 }
-
-extension Analyzer {
-    public func magnitude() -> FloatBuffer {
-        var magnitudes = FloatBuffer(zeros: halfN)
-        withPointer(&magnitudes) { mPtr in
-            vDSP_zvmags(&complex.dspSplitComplex, 1, mPtr, 1, Length(halfN))
-        }
-        return magnitudes
-    }
-}
