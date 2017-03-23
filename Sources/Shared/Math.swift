@@ -35,9 +35,32 @@ public enum Math {
         return sum(x * y)
     }
 
+    /// Computes the rolloff of a ```ValueArray```. This is the Nth percentile of the power spectral distribution.
+    ///
+    public static func rolloff<T: LinearType>(_ value: T, cutoffPercent n: Float = 0.85) -> Float where T.Element == Float {
+
+        guard value.count > 2 else {
+            fatalError("Value must have more than two elements!")
+        }
+        let totalEnergy = sum(value)
+        let threshold = totalEnergy * n
+
+        var rolloffSum: Float = 0
+        var index: Int = 0
+
+        for i in 0..<value.count {
+            rolloffSum += value[i]
+            if rolloffSum > threshold {
+                index = i
+                break
+            }
+        }
+        return Float(index) / Float(value.count)
+    }
+
     /// Computes the centroid of a ```ValueArray```.
     ///
-    public static func centroid(of value: ValueArray<Float>) -> Float {
+    public static func centroid(_ value: ValueArray<Float>) -> Float {
         let sumOfAmplitudes = sum(value)
         let weights         = FloatBuffer(rampingThrough: 0.0...Float(value.endIndex), by: 1.0)
         let weightedSum     = sum(value * weights)
@@ -57,12 +80,46 @@ public enum Math {
         return geometricMean(x + 1) / mean(x + 1)
     }
 
+    public static func median<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+        return sum(x) / Float(x.count)
+    }
+
+    public static func median<T: LinearType>(_ x: T) -> Double where T.Element == Double {
+        return sum(x) / Double(x.count)
+    }
+
+    public static func mean<T: LinearType>(_ x: T) -> T.Element {
+        return mean(x)
+    }
+
     public static func geometricMean<T: LinearType>(_ x: T) -> Float where T.Element == Float {
         return exp(sum(log(x)) / Float(x.count))
     }
 
-    public static func rootMeanSquare<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+    public static func rootMeanSquare<T: LinearType>(_ x: T) -> T.Element where T.Element == Float {
         return rmsq(x)
+    }
+
+    /// Computes the power mean of an array with a given ```Float``` power.
+    ///
+    /// If power = -1, the Power Mean is equal to the Harmonic Mean, if power = 0, the Power Mean is
+    /// equal to the Geometric Mean, if power = 1, the Power Mean is equal to the Arithmetic Mean,
+    /// if p = 2, the Power Mean is equal to the Root Mean Square.
+    ///
+    /// - attention:
+    /// Adapted from [Essentia](http://essentia.upf.edu/)
+    ///
+    public static func powerMean(_ x: FloatBuffer, power: Float) -> Float {
+        if power == 0 {
+            return Math.geometricMean(x)
+        } else {
+            var results = x
+            let powers = FloatBuffer(count: x.count, repeatedValue: power)
+            withPointers(&results, powers) { rp, pp in
+                vvpowf(rp, pp, rp, [Int32(x.count)])
+            }
+            return powf(mean(results), 1.0 / power)
+        }
     }
 
     public static func instantPower<T: LinearType>(_ x: T) -> Float where T.Element == Float {
@@ -76,8 +133,6 @@ public enum Math {
             return 0
         }
     }
-
-
 
     public static func dB(from amp: Amp) -> Decibel {
         return 20 * log10(amp)

@@ -11,6 +11,11 @@ import Upsurge
 
 extension Analyzer {
 
+    /// Computes the rolloff of the magnitude spectrum.
+    ///
+    public func rolloff() -> Float {
+        return Math.rolloff(magnitudeSpectrum)
+    }
     /// Computes the flatness of the magnitude spectrum.
     ///
     public func flatness() -> Float {
@@ -20,7 +25,7 @@ extension Analyzer {
     /// Computes the spectral centroid of the magnitude spectrum.
     ///
     public func centroid() -> Float {
-        return Math.centroid(of: magnitudeSpectrum)
+        return Math.centroid(magnitudeSpectrum)
     }
 
     /// Computes the root mean square (RMS) of the current buffer.
