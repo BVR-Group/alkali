@@ -77,7 +77,7 @@ public enum Math {
     public static func flatness<T: LinearType>(_ x: T) -> Float where T.Element == Float {
         // We add 1 here to avoid getting a zero result. Since this is a relative value,
         // it works just fine...
-        return geometricMean(x + 1) / mean(x + 1)
+        return Math.geometricMean(x + 1) / Upsurge.mean(x + 1)
     }
 
     public static func median<T: LinearType>(_ x: T) -> Float where T.Element == Float {

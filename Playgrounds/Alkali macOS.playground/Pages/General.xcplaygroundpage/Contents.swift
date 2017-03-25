@@ -1,9 +1,6 @@
 //: [Previous](@previous)
 
 //: Playground - noun: a place where people can play
-
-import Foundation
-import Accelerate
 import Alkali
 import Upsurge
 
