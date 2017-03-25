@@ -147,6 +147,53 @@ public enum Math {
     public static func peakEnergy<T: LinearType>(_ x: T) -> Float where T.Element == Float {
         return max(abs(x))
     }
+
+    public typealias MomentsTuple = (m0: Float, m1: Float, m2: Float, m3: Float, m4: Float)
+
+    public static func centralMoments(_ value: FloatBuffer) -> MomentsTuple {
+        guard value.count >= 2 else {
+            fatalError("Cannot compute the central moments for an array of less than two!")
+        }
+
+        let valueMean = mean(value)
+
+        var sumTuple:(Float, Float, Float) = (0.0, 0.0, 0.0)
+        for i in 0..<value.count {
+            let x = value[i] - valueMean
+            let x2 = x * x
+            sumTuple = (sumTuple.0 + x2, sumTuple.1 + x2 * x, sumTuple.2 + x2 * x2)
+        }
+        return (
+            m0: 1.0,
+            m1: 0,
+            m2: sumTuple.0 / Float(value.count),
+            m3: sumTuple.1 / Float(value.count),
+            m4: sumTuple.2 / Float(value.count)
+        )
+
+    }
+
+    public static func kurtosis(_ value: FloatBuffer) -> Float {
+        let centralMoments = Math.centralMoments(value)
+        if centralMoments.m2 == 0 {
+            return -3.0
+        } else {
+            return (centralMoments.m4 / (centralMoments.m2 * centralMoments.m2)) - 3.0
+        }
+    }
+
+    public static func skewness(_ value: FloatBuffer) -> Float {
+        let centralMoments = Math.centralMoments(value)
+        if centralMoments.m2 == 0 {
+            return 0.0
+        } else {
+            return (centralMoments.m3 / pow(centralMoments.m2, 1.5))
+        }
+    }
+
+    public static func spread(_ value: FloatBuffer) -> Float {
+        return Math.centralMoments(value).m2
+    }
 }
 
 extension Amp {

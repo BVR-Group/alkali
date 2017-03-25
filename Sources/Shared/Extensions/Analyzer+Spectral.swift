@@ -45,4 +45,36 @@ extension Analyzer {
         }
         return Math.rootMeanSquare(currentBuffer)
     }
+
+    /// Computes the spectral kurtosis of the magnitude spectrum.
+    ///
+    /// - note: The kurtosis gives a measure of how flat a distribution of values are around its
+    ///         mean value.
+    ///     - K = 3 for normal distribution.
+    ///     - K < 3 for flatter distribution.
+    ///     - K > 3 for a peak distribution.
+    ///
+    public func kurtosis() -> Float {
+        return Math.kurtosis(magnitudeSpectrum)
+    }
+
+    /// Computes the spectral skewness of the magnitude spectrum.
+    ///
+    /// - note: The skewness gives a measure of the asymmetry of a distribution of values are around
+    ///         its mean value.
+    ///     - SK = 0 indicates summetric distribution.
+    ///     - SK < 0 indicates more energy on the right.
+    ///     - SK > 0 indicates more energy on the left.
+    ///
+    public func skewness() -> Float {
+        return Math.kurtosis(magnitudeSpectrum)
+    }
+
+    /// Computes the spectral spread of the magnitude spectrum.
+    ///
+    /// - note: The skewness gives a measure of the spread of the spectrum around its mean value.
+    ///
+    public func spread() -> Float {
+        return Math.kurtosis(magnitudeSpectrum)
+    }
 }
