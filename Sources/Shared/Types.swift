@@ -14,3 +14,5 @@ public typealias FloatBuffer  = ValueArray<Float>
 
 public typealias Decibel = FloatLiteralType
 public typealias Amp = FloatLiteralType
+
+public typealias SampleRate = Float

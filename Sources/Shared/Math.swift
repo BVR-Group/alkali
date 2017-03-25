@@ -137,6 +137,10 @@ public enum Math {
     public static func dB(from amp: Amp) -> Decibel {
         return 20 * log10(amp)
     }
+    
+    public static func duration<T: LinearType>(_ x: T, given sampleRate: SampleRate) -> Float where T.Element == Float {
+        return  Float(x.count) / sampleRate
+    }
 }
 
 extension Amp {
