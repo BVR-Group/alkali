@@ -11,9 +11,12 @@ import Upsurge
 
 extension Analyzer {
 
-    /// Computes the peak energy of the magnitude spectrum.
+    /// Computes the peak energy of the current frame.
     public func peakEnergy() -> Float {
-        return Math.peakEnergy(magnitudeSpectrum)
+        guard let currentBuffer = currentBuffer else {
+            fatalError("No buffer to analyze!")
+        }
+        return Math.peakEnergy(currentBuffer)
     }
 
     /// Computes the rolloff of the magnitude spectrum.
