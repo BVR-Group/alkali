@@ -11,11 +11,17 @@ import Upsurge
 
 extension Analyzer {
 
+    /// Computes the peak energy of the magnitude spectrum.
+    public func peakEnergy() -> Float {
+        return Math.peakEnergy(magnitudeSpectrum)
+    }
+
     /// Computes the rolloff of the magnitude spectrum.
     ///
     public func rolloff() -> Float {
         return Math.rolloff(magnitudeSpectrum)
     }
+    
     /// Computes the flatness of the magnitude spectrum.
     ///
     public func flatness() -> Float {

@@ -20,19 +20,19 @@ public enum Math {
     }
 
     public static func energy<T: LinearType>(_ x: T) -> Double where T.Element == Double {
-        return innerProduct(x, x)
+        return Math.innerProduct(x, x)
     }
 
     public static func energy<T: LinearType>(_ x: T) -> Float where T.Element == Float {
-        return innerProduct(x, x)
+        return Math.innerProduct(x, x)
     }
 
     public static func innerProduct<T: LinearType>(_ x: T, _ y: T) -> Double where T.Element == Double {
-        return sum(x * y)
+        return Upsurge.sum(x * y)
     }
 
     public static func innerProduct<T: LinearType>(_ x: T, _ y: T) -> Float where T.Element == Float {
-        return sum(x * y)
+        return Upsurge.sum(x * y)
     }
 
     /// Computes the rolloff of a ```ValueArray```. This is the Nth percentile of the power spectral distribution.
@@ -42,7 +42,7 @@ public enum Math {
         guard value.count > 2 else {
             fatalError("Value must have more than two elements!")
         }
-        let totalEnergy = sum(value)
+        let totalEnergy = Upsurge.sum(value)
         let threshold = totalEnergy * n
 
         var rolloffSum: Float = 0
@@ -61,9 +61,9 @@ public enum Math {
     /// Computes the centroid of a ```ValueArray```.
     ///
     public static func centroid(_ value: ValueArray<Float>) -> Float {
-        let sumOfAmplitudes = sum(value)
+        let sumOfAmplitudes = Upsurge.sum(value)
         let weights         = FloatBuffer(rampingThrough: 0.0...Float(value.endIndex), by: 1.0)
-        let weightedSum     = sum(value * weights)
+        let weightedSum     = Upsurge.sum(value * weights)
 
         if sumOfAmplitudes > 0.0 {
             return weightedSum / sumOfAmplitudes
@@ -80,24 +80,26 @@ public enum Math {
         return Math.geometricMean(x + 1) / Upsurge.mean(x + 1)
     }
 
-    public static func median<T: LinearType>(_ x: T) -> Float where T.Element == Float {
-        return sum(x) / Float(x.count)
+    public static func median(_ x: FloatBuffer) -> Float {
+        var temp = x.copy()
+        let index = temp.count / 2
+        withPointer(&temp) { tPtr in
+            vDSP_vsort(tPtr, x.vDSPLength, 1)
+        }
+        return temp[index]
     }
 
-    public static func median<T: LinearType>(_ x: T) -> Double where T.Element == Double {
-        return sum(x) / Double(x.count)
+    public static func mean<T: LinearType>(_ x: T) -> T.Element where T.Element == Float {
+        return Upsurge.mean(x)
     }
 
-    public static func mean<T: LinearType>(_ x: T) -> T.Element {
-        return mean(x)
-    }
-
-    public static func geometricMean<T: LinearType>(_ x: T) -> Float where T.Element == Float {
-        return exp(sum(log(x)) / Float(x.count))
+    public static func geometricMean(_ x: FloatBuffer) -> Float {
+        let result = x.copy()
+        return exp(Upsurge.sum(Upsurge.log(result)) / Float(x.count))
     }
 
     public static func rootMeanSquare<T: LinearType>(_ x: T) -> T.Element where T.Element == Float {
-        return rmsq(x)
+        return Upsurge.rmsq(x)
     }
 
     /// Computes the power mean of an array with a given ```Float``` power.
@@ -113,12 +115,12 @@ public enum Math {
         if power == 0 {
             return Math.geometricMean(x)
         } else {
-            var results = x
+            var results = x.copy()
             let powers = FloatBuffer(count: x.count, repeatedValue: power)
             withPointers(&results, powers) { rp, pp in
                 vvpowf(rp, pp, rp, [Int32(x.count)])
             }
-            return powf(mean(results), 1.0 / power)
+            return powf(Upsurge.mean(results), 1.0 / power)
         }
     }
 
@@ -140,6 +142,10 @@ public enum Math {
     
     public static func duration<T: LinearType>(_ x: T, given sampleRate: SampleRate) -> Float where T.Element == Float {
         return  Float(x.count) / sampleRate
+    }
+
+    public static func peakEnergy<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+        return max(abs(x))
     }
 }
 
