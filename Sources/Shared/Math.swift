@@ -194,6 +194,15 @@ public enum Math {
     public static func spread(_ value: FloatBuffer) -> Float {
         return Math.centralMoments(value).m2
     }
+
+    public static func crest(_ value: FloatBuffer) -> Float {
+        let energy = Math.energy(value)
+        if energy > 0 {
+            return Upsurge.max(value) / Upsurge.mean(value)
+        } else {
+            return 1.0
+        }
+    }
 }
 
 extension Amp {

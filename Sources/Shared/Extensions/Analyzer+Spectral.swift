@@ -77,4 +77,10 @@ extension Analyzer {
     public func spread() -> Float {
         return Math.kurtosis(magnitudeSpectrum)
     }
+
+    /// Computes the spectral crest of the magnitude spectrum.
+    ///
+    public func crest() -> Float {
+        return Math.crest(magnitudeSpectrum)
+    }
 }
