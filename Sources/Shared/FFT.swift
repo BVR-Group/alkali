@@ -107,7 +107,7 @@ public class FFT {
             vDSP_fft_zrip(fftSetup, &complex.dspSplitComplex, 1, Length(log2N), FFTDirection(FFT_FORWARD))
         }
 
-        // Prepare the complex to be mirrored and correct wrong values coming from the accelerate FFT...
+        // Prepare the complex to be mirrored and correct wrong(?) values coming from the accelerate FFT...
         complex.real[halfN]      = complex.imaginary[0]
         complex.imaginary[halfN] = 0.0
         complex.imaginary[0]     = 0.0
@@ -125,8 +125,5 @@ public class FFT {
             // Square all of the points in the complex...
             vDSP_zvmags(&complex.dspSplitComplex, 1, mPtr, 1, Length(halfN))
         }
-
-        // sqrt them all to get the appropriate values for the spectrum
-        magnitudeSpectrum = sqrt(magnitudeSpectrum)
     }
 }
