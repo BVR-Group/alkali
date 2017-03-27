@@ -17,6 +17,7 @@
 		FC35F7D81E7479AB00FE5DA1 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35F7D61E7479AB00FE5DA1 /* Types.swift */; };
 		FC571C5E1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
 		FC571C5F1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
+		FC730C521E896B4300DDA402 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC730C511E896B4300DDA402 /* UIImage+.swift */; };
 		FC83A4F91E718B6D005A81A9 /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FC83A4F71E718B6D005A81A9 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
 		FC83A5001E718D24005A81A9 /* Upsurge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83A4FF1E718D24005A81A9 /* Upsurge.framework */; };
@@ -40,6 +41,7 @@
 		FC2CD8841E7ECD1800920C0A /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		FC35F7D61E7479AB00FE5DA1 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		FC571C5D1E74AF5C00B9EF16 /* FFT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFT.swift; sourceTree = "<group>"; };
+		FC730C511E896B4300DDA402 /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		FC83A4F51E718B6D005A81A9 /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC83A4F71E718B6D005A81A9 /* Alkali.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
 		FC83A4F81E718B6D005A81A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		FC1CB8851E705BD100A8349B /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				FC730C501E896B3800DDA402 /* Extensions */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -139,6 +142,14 @@
 			children = (
 			);
 			path = tvOS;
+			sourceTree = "<group>";
+		};
+		FC730C501E896B3800DDA402 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FC730C511E896B4300DDA402 /* UIImage+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FC83A4F61E718B6D005A81A9 /* Alkali */ = {
@@ -355,6 +366,7 @@
 				FC571C5E1E74AF5C00B9EF16 /* FFT.swift in Sources */,
 				FC194D1F1E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */,
 				FC35F7D71E7479AB00FE5DA1 /* Types.swift in Sources */,
+				FC730C521E896B4300DDA402 /* UIImage+.swift in Sources */,
 				FC2CD8851E7ECD1800920C0A /* Math.swift in Sources */,
 				FCF584641E8417C4003868D7 /* Analyzer+Statistical.swift in Sources */,
 			);

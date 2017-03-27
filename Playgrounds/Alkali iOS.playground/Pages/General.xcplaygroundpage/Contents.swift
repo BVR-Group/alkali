@@ -46,7 +46,6 @@ import Upsurge
 
 //let val = FloatBuffer(rampingThrough: 1...512.0, by: 1.0)
 let val = FloatBuffer(ones: 512)
-
 let analyzer = Analyzer(size: val.count, sampleRate: 44100.0)
 analyzer.process(frames: val)
 
