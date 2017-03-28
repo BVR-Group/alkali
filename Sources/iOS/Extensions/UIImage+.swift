@@ -123,18 +123,26 @@ extension UIImage {
         return UIImage(cgImage: cgImage)
     }
 
-    public func resize(size: CGSize) -> UIImage {
-        let widthRatio = size.width / self.size.width
-        let heightRatio = size.height / self.size.height
-        let ratio = (widthRatio < heightRatio) ? widthRatio : heightRatio
-        let resizedSize = CGSize(width: (self.size.width * ratio), height: (self.size.height * ratio))
+    public func resize(size: CGSize) -> UIImage? {
+        let destWidth = size.width
+        let destHeight = size.height
+        let alphaInfo = CGImageAlphaInfo.premultipliedFirst
+        guard let context = CGContext(data: nil, width: Int(destWidth), height: Int(destHeight), bitsPerComponent: 8, bytesPerRow: Int(destWidth) * 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: alphaInfo.rawValue),
+        let originalCGImage = self.cgImage else {
+            return nil
+        }
+        context.setShouldAntialias(false)
+        context.setAllowsAntialiasing(false)
+        context.interpolationQuality = .none
 
-        // 画質を落とさないように設定
-        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0)
-        draw(in: CGRect(x: 0, y: 0, width: resizedSize.width, height: resizedSize.height))
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return resizedImage
+        UIGraphicsPushContext(context)
+        context.draw(originalCGImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        UIGraphicsPopContext()
+
+        guard let newCGImage = context.makeImage() else {
+            return nil
+        }
+        return UIImage(cgImage: newCGImage)
     }
 }
 
