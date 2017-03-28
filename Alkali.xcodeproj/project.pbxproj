@@ -17,6 +17,7 @@
 		FC35F7D81E7479AB00FE5DA1 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35F7D61E7479AB00FE5DA1 /* Types.swift */; };
 		FC571C5E1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
 		FC571C5F1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
+		FC6BF86D1E8AB3AA0060EC1B /* PixelCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BF86C1E8AB3AA0060EC1B /* PixelCanvas.swift */; };
 		FC730C521E896B4300DDA402 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC730C511E896B4300DDA402 /* UIImage+.swift */; };
 		FC83A4F91E718B6D005A81A9 /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FC83A4F71E718B6D005A81A9 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
@@ -41,6 +42,7 @@
 		FC2CD8841E7ECD1800920C0A /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		FC35F7D61E7479AB00FE5DA1 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		FC571C5D1E74AF5C00B9EF16 /* FFT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFT.swift; sourceTree = "<group>"; };
+		FC6BF86C1E8AB3AA0060EC1B /* PixelCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelCanvas.swift; sourceTree = "<group>"; };
 		FC730C511E896B4300DDA402 /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		FC83A4F51E718B6D005A81A9 /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC83A4F71E718B6D005A81A9 /* Alkali.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		FC1CB8851E705BD100A8349B /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				FC6BF86B1E8AB39B0060EC1B /* Utils */,
 				FC730C501E896B3800DDA402 /* Extensions */,
 			);
 			path = iOS;
@@ -142,6 +145,14 @@
 			children = (
 			);
 			path = tvOS;
+			sourceTree = "<group>";
+		};
+		FC6BF86B1E8AB39B0060EC1B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FC6BF86C1E8AB3AA0060EC1B /* PixelCanvas.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		FC730C501E896B3800DDA402 /* Extensions */ = {
@@ -364,6 +375,7 @@
 				FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */,
 				FC83A5091E719585005A81A9 /* ValueArray.swift in Sources */,
 				FC571C5E1E74AF5C00B9EF16 /* FFT.swift in Sources */,
+				FC6BF86D1E8AB3AA0060EC1B /* PixelCanvas.swift in Sources */,
 				FC194D1F1E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */,
 				FC35F7D71E7479AB00FE5DA1 /* Types.swift in Sources */,
 				FC730C521E896B4300DDA402 /* UIImage+.swift in Sources */,

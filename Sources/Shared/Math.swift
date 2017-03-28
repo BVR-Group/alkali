@@ -108,7 +108,7 @@ public enum Math {
     /// equal to the Geometric Mean, if power = 1, the Power Mean is equal to the Arithmetic Mean,
     /// if p = 2, the Power Mean is equal to the Root Mean Square.
     ///
-    /// - attention:
+    /// - Authors:
     /// Adapted from [Essentia](http://essentia.upf.edu/)
     ///
     public static func powerMean(_ x: FloatBuffer, power: Float) -> Float {
