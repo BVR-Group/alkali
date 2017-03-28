@@ -23,10 +23,9 @@ extension CGFloat {
 
 extension UIColor {
     public func toUInt8() -> Pixel_8888 {
-        guard let components = cgColor.components else {
-            return (0,0,0,0)
-        }
-        return (components[0].toUInt8, components[1].toUInt8, components[2].toUInt8, components[3].toUInt8)
+        let ciColor = CIColor(color: self)
+        let (alpha, red, green, blue) = (ciColor.alpha, ciColor.red, ciColor.green, ciColor.blue)
+        return (red.toUInt8, green.toUInt8, blue.toUInt8, alpha.toUInt8)
     }
 }
 
@@ -96,12 +95,12 @@ extension UIImage {
     public static func from(_ pixelBuffer: PixelBuffer) -> UIImage? {
         var pixelData = pixelBuffer.data
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue).union(CGBitmapInfo())
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
         let bitsPerComponent = 8
-        let bytesPerPixel = 4
-        let bitsPerPixel = bytesPerPixel * bitsPerComponent
-        let bytesPerRow = bytesPerPixel * pixelBuffer.size.width
-        let totalBytes = pixelBuffer.size.height * bytesPerRow
+        let bytesPerPixel    = 4
+        let bitsPerPixel     = bytesPerPixel * bitsPerComponent
+        let bytesPerRow      = bytesPerPixel * pixelBuffer.size.width
+        let totalBytes       = pixelBuffer.size.height * bytesPerRow
 
         let data = NSData(bytes: &pixelData, length: totalBytes)
 
