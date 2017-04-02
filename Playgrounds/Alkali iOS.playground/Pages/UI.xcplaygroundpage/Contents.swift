@@ -78,7 +78,6 @@ extension UIColor {
         guard self.getRed(&result.r, green: &result.g, blue: &result.b, alpha: &result.a) else {
             fatalError("Unable to convert color!")
         }
-        print("ARGB -> \(result)")
         return result
     }
 
@@ -87,7 +86,6 @@ extension UIColor {
         guard self.getHue(&result.h, saturation: &result.s, brightness: &result.b, alpha: &result.a) else {
             fatalError("Unable to convert color!")
         }
-        print("HSBA -> \(result)")
         return result
     }
 
@@ -145,7 +143,6 @@ extension UIColor {
         result.b = UIColor.lerp(from: tempA.b, to: tempB.b, percent: p)
         result.a = UIColor.lerp(from: tempA.a, to: tempB.a, percent: p)
 
-        print(result)
         return UIColor(from: result)
     }
 
@@ -202,17 +199,18 @@ func spectrum(from colors: [UIColor], steps: Int) -> [UIColor] {
     return result
 }
 
-let steps = 25
-let colors:[UIColor] = [.black, .blue, .purple, .red, .yellow]
+let pistachio = UIColor(red: 134.0/255.0, green: 203.0/255.0, blue: 146.0/255.0, alpha: 1.0)
+
+let steps = 4
+let colors:[UIColor] = [pistachio, .brown, .magenta, .blue, pistachio, .purple, .red, pistachio, .yellow, .white, .cyan, .brown, .black, pistachio]
 var canvas = PixelCanvas(of: CGSize(width: steps * colors.count, height: 1))
+canvas.size
 
 for (index, color) in spectrum(from: colors , steps: steps).enumerated() {
     canvas[index, 0] = color
 }
 
-UIImageView(image: canvas.image?.resized(to: CGSize(width: 704, height: 64)))
-
-//PlaygroundPage.current.needsIndefiniteExecution = true
+canvas.image?.resized(to: CGSize(width: canvas.size.width * 32, height: canvas.size.height * 64))
 
 
 //audioPlayer?.play()
