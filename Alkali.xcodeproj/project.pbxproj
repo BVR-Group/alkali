@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC08CB541E91A761003C5E71 /* Spectrogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08CB531E91A761003C5E71 /* Spectrogram.swift */; };
 		FC194D1C1E7EB7B10080F245 /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC194D1B1E7EB7B10080F245 /* Analyzer.swift */; };
 		FC194D1D1E7EB7B10080F245 /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC194D1B1E7EB7B10080F245 /* Analyzer.swift */; };
 		FC194D1F1E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC194D1E1E7EC0150080F245 /* Analyzer+Temporal.swift */; };
 		FC194D201E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC194D1E1E7EC0150080F245 /* Analyzer+Temporal.swift */; };
+		FC1A838C1E918E770028B4F4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1A838B1E918E770028B4F4 /* UIColor+.swift */; };
+		FC1A838E1E919CF40028B4F4 /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1A838D1E919CF40028B4F4 /* SampleBuffer.swift */; };
 		FC2CD8851E7ECD1800920C0A /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2CD8841E7ECD1800920C0A /* Math.swift */; };
 		FC2CD8861E7ECD1800920C0A /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2CD8841E7ECD1800920C0A /* Math.swift */; };
 		FC35F7D71E7479AB00FE5DA1 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35F7D61E7479AB00FE5DA1 /* Types.swift */; };
@@ -36,8 +39,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC08CB531E91A761003C5E71 /* Spectrogram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spectrogram.swift; sourceTree = "<group>"; };
 		FC194D1B1E7EB7B10080F245 /* Analyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analyzer.swift; sourceTree = "<group>"; };
 		FC194D1E1E7EC0150080F245 /* Analyzer+Temporal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Analyzer+Temporal.swift"; sourceTree = "<group>"; };
+		FC1A838B1E918E770028B4F4 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		FC1A838D1E919CF40028B4F4 /* SampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
 		FC1CB85B1E70568400A8349B /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC2CD8841E7ECD1800920C0A /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		FC35F7D61E7479AB00FE5DA1 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -151,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				FC6BF86C1E8AB3AA0060EC1B /* PixelCanvas.swift */,
+				FC1A838D1E919CF40028B4F4 /* SampleBuffer.swift */,
+				FC08CB531E91A761003C5E71 /* Spectrogram.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				FC730C511E896B4300DDA402 /* UIImage+.swift */,
+				FC1A838B1E918E770028B4F4 /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,8 +388,11 @@
 				FC194D1F1E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */,
 				FC35F7D71E7479AB00FE5DA1 /* Types.swift in Sources */,
 				FC730C521E896B4300DDA402 /* UIImage+.swift in Sources */,
+				FC1A838C1E918E770028B4F4 /* UIColor+.swift in Sources */,
 				FC2CD8851E7ECD1800920C0A /* Math.swift in Sources */,
 				FCF584641E8417C4003868D7 /* Analyzer+Statistical.swift in Sources */,
+				FC1A838E1E919CF40028B4F4 /* SampleBuffer.swift in Sources */,
+				FC08CB541E91A761003C5E71 /* Spectrogram.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
