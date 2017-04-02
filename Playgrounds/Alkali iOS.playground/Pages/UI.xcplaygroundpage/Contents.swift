@@ -8,7 +8,7 @@ import AVFoundation
 import PlaygroundSupport
 import Upsurge
 
-//PlaygroundPage.current.needsIndefiniteExecution = true
+PlaygroundPage.current.needsIndefiniteExecution = true
 
 func int8toFloat(_ input: UnsafePointer<Int8>, size: Int, channels: Int, channelIndex: Int = 0) -> FloatBuffer {
     let result = FloatBuffer(zeros: size / channels)
@@ -32,23 +32,97 @@ func decimate(_ buffer: FloatBuffer, factor: Int, window: Alkali.Window) -> Floa
     return result
 }
 
+func process(from data: inout Data, size: Int) {
+    data.withUnsafeBytes { (ptr: UnsafePointer<Int16>) in
+        data.removeFirst(size * MemoryLayout<Int16>.size)
+    }
+}
+
 public func drawSpectrogram(of size: CGSize, from url: URL) -> NSImage? {
-//    var canvas = PixelCanvas(of: size)
-    let sampleBuffer = SampleBuffer(from: url)
+
+    var sampleBuffer = Data()
     let analyzer = Analyzer(size: 1024, sampleRate: 44100, window: .hamming)
 
-    let results = sampleBuffer.data.withUnsafeBytes { (dataPtr: UnsafePointer<Int8>) -> FloatBuffer in
-        return int8toFloat(dataPtr, size: sampleBuffer.data.count, channels: 2, channelIndex: 0)
+    let asset = AVURLAsset(url: url, options: [AVURLAssetPreferPreciseDurationAndTimingKey: NSNumber(value: true as Bool)])
+
+    guard let assetTrack = asset.tracks(withMediaType: AVMediaTypeAudio).first else {
+            return nil
     }
 
-    results.count
-    
-    var desampledData = decimate(results, factor: 2, window: .hamming)
-    desampledData.count
+    asset.loadValuesAsynchronously(forKeys: ["duration"]) {
+        let status = asset.statusOfValue(forKey: "duration", error: nil)
+        switch status {
+        case .loaded:
+            guard let formatDescription = assetTrack.formatDescriptions.first else {
+                return
+            }
 
-    let chunkSize = 1024
-    var read = 0
-    var canvasColumn = 0
+            let item = formatDescription as! CMAudioFormatDescription
+
+            guard let basicDescription = CMAudioFormatDescriptionGetStreamBasicDescription(item)?.pointee,
+                  let reader = try? AVAssetReader(asset: asset)
+            else {
+                return
+            }
+
+            let totalSamples = Float(basicDescription.mSampleRate) * Float(asset.duration.value) / Float(asset.duration.timescale)
+
+            let outputSettings: [String : Any] = [
+                AVFormatIDKey:                  Int(kAudioFormatLinearPCM),
+                AVLinearPCMBitDepthKey:         16,
+                AVLinearPCMIsBigEndianKey:      false,
+                AVLinearPCMIsFloatKey:          false,
+                AVLinearPCMIsNonInterleaved:    false
+            ]
+
+            let readerOutput = AVAssetReaderTrackOutput(track: assetTrack, outputSettings: outputSettings)
+            readerOutput.alwaysCopiesSampleData = false
+            reader.add(readerOutput)
+
+            let channelCount = Int(basicDescription.mChannelsPerFrame)
+            let widthInPixels = Int(size.width)
+            let samplesPerPixel = max(1, channelCount * Int(totalSamples) / widthInPixels)
+            let filter = [Float](repeating: 1.0 / Float(samplesPerPixel), count: samplesPerPixel)
+
+            reader.startReading()
+
+            while reader.status == .reading {
+                guard let readSampleBuffer = readerOutput.copyNextSampleBuffer(),
+                    let readBuffer = CMSampleBufferGetDataBuffer(readSampleBuffer) else {
+                        break
+                }
+                var readBufferLength = 0
+                var readBufferPointer: UnsafeMutablePointer<Int8>?
+                let samplesToProcess = sampleBuffer.count / MemoryLayout<Int16>.size
+
+                CMBlockBufferGetDataPointer(readBuffer, 0, &readBufferLength, nil, &readBufferPointer)
+                sampleBuffer.append(UnsafeBufferPointer(start: readBufferPointer, count: readBufferLength))
+                CMSampleBufferInvalidate(readSampleBuffer)
+
+                guard samplesToProcess > 0 else { continue }
+
+                process(from: &sampleBuffer, size: samplesToProcess)
+            }
+        default:
+            return
+        }
+        
+    }
+
+
+//
+//    let results = sampleBuffer.data.withUnsafeBytes { (dataPtr: UnsafePointer<Int8>) -> FloatBuffer in
+//        return int8toFloat(dataPtr, size: sampleBuffer.data.count, channels: 2, channelIndex: 0)
+//    }
+//
+//    results.count
+//    
+//    var desampledData = decimate(results, factor: 2, window: .hamming)
+//    desampledData.count
+//
+//    let chunkSize = 1024
+//    var read = 0
+//    var canvasColumn = 0
 //    repeat {
 //        let slice = FloatBuffer(ValueArraySlice(base: desampledData, startIndex: read, endIndex: read + chunkSize, step: 1))
 //
