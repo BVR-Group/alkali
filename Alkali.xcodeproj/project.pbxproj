@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC08CB541E91A761003C5E71 /* Spectrogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08CB531E91A761003C5E71 /* Spectrogram.swift */; };
+		FC09728B1E91B572006522B2 /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1A838D1E919CF40028B4F4 /* SampleBuffer.swift */; };
 		FC194D1C1E7EB7B10080F245 /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC194D1B1E7EB7B10080F245 /* Analyzer.swift */; };
 		FC194D1D1E7EB7B10080F245 /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC194D1B1E7EB7B10080F245 /* Analyzer.swift */; };
 		FC194D1F1E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC194D1E1E7EC0150080F245 /* Analyzer+Temporal.swift */; };
@@ -402,6 +403,7 @@
 			files = (
 				FCA527CC1E7F0E470084D550 /* Analyzer+Spectral.swift in Sources */,
 				FC83A50E1E719BD3005A81A9 /* Playgrounds.swift in Sources */,
+				FC09728B1E91B572006522B2 /* SampleBuffer.swift in Sources */,
 				FC194D1D1E7EB7B10080F245 /* Analyzer.swift in Sources */,
 				FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */,
 				FC83A50A1E719585005A81A9 /* ValueArray.swift in Sources */,
