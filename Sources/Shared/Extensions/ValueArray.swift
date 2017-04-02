@@ -23,19 +23,21 @@ extension ValueArray where Element == Double {
     public convenience init(ones n: Int) {
         self.init(count: n, repeatedValue: 1.0)
     }
-
-    /// Creates a ```ValueArray``` of ```Double``` using Accelerate, through a ```ClosedRange```.
-    public convenience init(rampingThrough range: ClosedRange<Element>, by increment: Element) {
+    public static func ramp(forRange range: ClosedRange<Double>, by increment: Double) -> DoubleBuffer {
         let n = Int(((range.upperBound - range.lowerBound) / increment))
-        let result = ValueArray<Element>(zeros: n)
+        let result = ValueArray<Double>(zeros: n)
         var increase = increment
         var from = range.lowerBound
 
         result.withUnsafeMutablePointer { (pointer) -> Void in
             vDSP_vrampD(&from, &increase, pointer, 1, result.vDSPLength)
         }
+        return result
+    }
 
-        self.init(result)
+    /// Creates a ```ValueArray``` of ```Double``` using Accelerate, through a ```ClosedRange```.
+    public convenience init(rampingThrough range: ClosedRange<Element>, by increment: Element) {
+        self.init(DoubleBuffer.ramp(forRange: range, by: increment))
     }
 }
 
@@ -49,18 +51,21 @@ extension ValueArray where Element == Float {
         self.init(count: n, repeatedValue: 1.0)
     }
 
-    /// Creates a ```ValueArray``` of ```Float``` using Accelerate, through a ```ClosedRange```.
-    public convenience init(rampingThrough range: ClosedRange<Element>, by increment: Element) {
+    public static func ramp(forRange range: ClosedRange<Float>, by increment: Float) -> FloatBuffer {
         let n = Int(((range.upperBound - range.lowerBound) / increment))
-        let result = ValueArray<Element>(zeros: n)
+        let result = ValueArray<Float>(zeros: n)
         var increase = increment
         var from = range.lowerBound
 
         result.withUnsafeMutablePointer { (pointer) -> Void in
             vDSP_vramp(&from, &increase, pointer, 1, result.vDSPLength)
         }
+        return result
+    }
 
-        self.init(result)
+    /// Creates a ```ValueArray``` of ```Float``` using Accelerate, through a ```ClosedRange```.
+    public convenience init(rampingThrough range: ClosedRange<Element>, by increment: Element) {
+        self.init(FloatBuffer.ramp(forRange: range, by: increment))
     }
 
     public var halfIndex: ValueArray.Index {
