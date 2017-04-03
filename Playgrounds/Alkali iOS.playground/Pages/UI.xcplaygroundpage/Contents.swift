@@ -10,20 +10,20 @@ import Upsurge
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
-func int8toFloat(_ input: UnsafePointer<Int8>, size: Int, channels: Int, channelIndex: Int = 0) -> FloatBuffer {
+func int16ToFloat(_ input: UnsafePointer<Int16>, size: Int, channels: Int, channelIndex: Int = 0) -> FloatBuffer {
     let result = FloatBuffer(zeros: size / channels)
     result.withUnsafeMutablePointer { resultPtr in
         if (channels >= 2) {
-            vDSP_vflt8(input.advanced(by: channelIndex), vDSP_Stride(channels), resultPtr, 1, vDSP_Length(size / channels))
+            vDSP_vflt16(input.advanced(by: channelIndex), vDSP_Stride(channels), resultPtr, 1, vDSP_Length(size / channels))
         } else {
-            vDSP_vflt8(input, 1, resultPtr, 1, vDSP_Length(size))
+            vDSP_vflt16(input, 1, resultPtr, 1, vDSP_Length(size))
         }
     }
 
     return result
 }
 
-func decimate(_ buffer: FloatBuffer, factor: Int, window: Alkali.Window) -> FloatBuffer {
+func downsample(_ buffer: FloatBuffer, factor: Int, window: Alkali.Window) -> FloatBuffer {
     var result = FloatBuffer(zeros: buffer.count / factor)
     let windowBuffer: FloatBuffer = window.buffer(Alkali.Window.Length(buffer.count))
     withPointers(buffer, windowBuffer, &result) { bufferPtr, windowPtr, resultPtr in
@@ -32,8 +32,16 @@ func decimate(_ buffer: FloatBuffer, factor: Int, window: Alkali.Window) -> Floa
     return result
 }
 
+let analyzer = Analyzer(size: 2048, sampleRate: 44100)
 func process(from data: inout Data, size: Int) {
     data.withUnsafeBytes { (ptr: UnsafePointer<Int16>) in
+
+        let ints = int16ToFloat(ptr, size: size, channels: 2)
+        let frames = downsample(ints, factor: 4, window: .rectangle)
+        analyzer.process(frames: frames)
+        DispatchQueue.main.async {
+            print(frames)
+        }
         data.removeFirst(size * MemoryLayout<Int16>.size)
     }
 }
