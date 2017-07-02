@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import Upsurge
+import Atoll
 
 public final class Analyzer: FFT {
-    internal var currentBuffer: FloatBuffer? = nil
+    internal var currentBuffer: FloatList? = nil
 
-    public func process(frames: FloatBuffer) {
+    public func process(frames: FloatList) {
         currentBuffer = frames
         super.transform(buffer: frames)
     }

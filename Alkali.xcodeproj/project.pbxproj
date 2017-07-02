@@ -22,13 +22,11 @@
 		FC571C5E1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
 		FC571C5F1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
 		FC6BF86D1E8AB3AA0060EC1B /* PixelCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BF86C1E8AB3AA0060EC1B /* PixelCanvas.swift */; };
+		FC6C69A51F094D03000477B3 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6C69A41F094CF4000477B3 /* Atoll.framework */; };
 		FC730C521E896B4300DDA402 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC730C511E896B4300DDA402 /* UIImage+.swift */; };
 		FC83A4F91E718B6D005A81A9 /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FC83A4F71E718B6D005A81A9 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
 		FC83A5001E718D24005A81A9 /* Upsurge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83A4FF1E718D24005A81A9 /* Upsurge.framework */; };
-		FC83A5041E718D98005A81A9 /* Upsurge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83A5031E718D98005A81A9 /* Upsurge.framework */; };
-		FC83A5091E719585005A81A9 /* ValueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A5081E719585005A81A9 /* ValueArray.swift */; };
-		FC83A50A1E719585005A81A9 /* ValueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A5081E719585005A81A9 /* ValueArray.swift */; };
 		FC83A50D1E719BD3005A81A9 /* Playgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */; };
 		FC83A50E1E719BD3005A81A9 /* Playgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */; };
 		FCA527CB1E7F0E470084D550 /* Analyzer+Spectral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */; };
@@ -50,13 +48,12 @@
 		FC35F7D61E7479AB00FE5DA1 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		FC571C5D1E74AF5C00B9EF16 /* FFT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFT.swift; sourceTree = "<group>"; };
 		FC6BF86C1E8AB3AA0060EC1B /* PixelCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelCanvas.swift; sourceTree = "<group>"; };
+		FC6C69A41F094CF4000477B3 /* Atoll.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Atoll.framework; path = Carthage/Build/Mac/Atoll.framework; sourceTree = "<group>"; };
 		FC730C511E896B4300DDA402 /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		FC83A4F51E718B6D005A81A9 /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC83A4F71E718B6D005A81A9 /* Alkali.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
 		FC83A4F81E718B6D005A81A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC83A4FF1E718D24005A81A9 /* Upsurge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Upsurge.framework; path = Carthage/Build/iOS/Upsurge.framework; sourceTree = "<group>"; };
-		FC83A5031E718D98005A81A9 /* Upsurge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Upsurge.framework; path = Carthage/Build/Mac/Upsurge.framework; sourceTree = "<group>"; };
-		FC83A5081E719585005A81A9 /* ValueArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueArray.swift; sourceTree = "<group>"; };
 		FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playgrounds.swift; sourceTree = "<group>"; };
 		FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Analyzer+Spectral.swift"; sourceTree = "<group>"; };
 		FCCB7B191E70803F0092E4FC /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
@@ -78,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC83A5041E718D98005A81A9 /* Upsurge.framework in Frameworks */,
+				FC6C69A51F094D03000477B3 /* Atoll.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +199,7 @@
 		FC83A5051E718DA9005A81A9 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				FC83A5031E718D98005A81A9 /* Upsurge.framework */,
+				FC6C69A41F094CF4000477B3 /* Atoll.framework */,
 			);
 			name = macOS;
 			sourceTree = "<group>";
@@ -210,7 +207,6 @@
 		FC83A5071E719575005A81A9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FC83A5081E719585005A81A9 /* ValueArray.swift */,
 				FC194D1E1E7EC0150080F245 /* Analyzer+Temporal.swift */,
 				FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */,
 				FCF584631E8417C4003868D7 /* Analyzer+Statistical.swift */,
@@ -292,7 +288,7 @@
 		FC1CB8521E70568400A8349B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "BVR, LLC";
 				TargetAttributes = {
 					FC1CB85A1E70568400A8349B = {
@@ -302,6 +298,7 @@
 					};
 					FC83A4F41E718B6D005A81A9 = {
 						CreatedOnToolsVersion = 8.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -383,7 +380,6 @@
 				FC83A50D1E719BD3005A81A9 /* Playgrounds.swift in Sources */,
 				FC194D1C1E7EB7B10080F245 /* Analyzer.swift in Sources */,
 				FCCB7B1A1E70803F0092E4FC /* Window.swift in Sources */,
-				FC83A5091E719585005A81A9 /* ValueArray.swift in Sources */,
 				FC571C5E1E74AF5C00B9EF16 /* FFT.swift in Sources */,
 				FC6BF86D1E8AB3AA0060EC1B /* PixelCanvas.swift in Sources */,
 				FC194D1F1E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */,
@@ -406,7 +402,6 @@
 				FC09728B1E91B572006522B2 /* SampleBuffer.swift in Sources */,
 				FC194D1D1E7EB7B10080F245 /* Analyzer.swift in Sources */,
 				FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */,
-				FC83A50A1E719585005A81A9 /* ValueArray.swift in Sources */,
 				FC571C5F1E74AF5C00B9EF16 /* FFT.swift in Sources */,
 				FC194D201E7EC0150080F245 /* Analyzer+Temporal.swift in Sources */,
 				FC35F7D81E7479AB00FE5DA1 /* Types.swift in Sources */,
@@ -428,7 +423,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -436,7 +433,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -481,7 +482,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -489,7 +492,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -592,7 +599,8 @@
 				PRODUCT_NAME = Alkali;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -618,7 +626,8 @@
 				PRODUCT_NAME = Alkali;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

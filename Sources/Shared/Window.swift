@@ -8,7 +8,7 @@
 
 import Foundation
 import Accelerate
-import Upsurge
+import Atoll
 
 func sinc(_ x: Double) -> Double {
     return x == 0 ? 1 : sin(x) / x
@@ -42,20 +42,18 @@ public enum Window {
 
     case cosine
 
-    /// Returns a ```DoubleBuffer``` of a given ```Length``` and type.
-    public func buffer(_ length: Length) -> DoubleBuffer {
-        let result = DoubleBuffer(count: Int(length), repeatedValue: 0.0)
-        result.withUnsafeMutablePointer { (pointer) -> Void in
-            switch self {
-            case .hamming:
-                vDSP_hamm_windowD(pointer, length, 0)
-            case .hanning:
-                vDSP_hann_windowD(pointer, length, 0)
-            case .blackman:
-                vDSP_blkman_windowD(pointer, length, 0)
-            default:
-                return
-            }
+    /// Returns a ```DoubleList``` of a given ```Length``` and type.
+    public func buffer(_ length: Length) -> DoubleList {
+        var result = DoubleList(count: Int(length))
+        switch self {
+        case .hamming:
+            vDSP_hamm_windowD(result.pointer, length, 0)
+        case .hanning:
+            vDSP_hann_windowD(result.pointer, length, 0)
+        case .blackman:
+            vDSP_blkman_windowD(result.pointer, length, 0)
+        default:
+            break
         }
 
         let N = Double(length)
@@ -98,20 +96,18 @@ public enum Window {
         return result
     }
 
-    /// Returns a ```FloatBuffer``` of a given ```Length``` and type.
-    public func buffer(_ length: Length) -> FloatBuffer {
-        let result = FloatBuffer(count: Int(length), repeatedValue: 0.0)
-        result.withUnsafeMutablePointer { (pointer) -> Void in
-            switch self {
-            case .hamming:
-                vDSP_hamm_window(pointer, length, 0)
-            case .hanning:
-                vDSP_hann_window(pointer, length, 0)
-            case .blackman:
-                vDSP_blkman_window(pointer, length, 0)
-            default:
-                return
-            }
+    /// Returns a ```FloatList``` of a given ```Length``` and type.
+    public func buffer(_ length: Length) -> FloatList {
+        var result = FloatList(count: Int(length))
+        switch self {
+        case .hamming:
+            vDSP_hamm_window(result.pointer, length, 0)
+        case .hanning:
+            vDSP_hann_window(result.pointer, length, 0)
+        case .blackman:
+            vDSP_blkman_window(result.pointer, length, 0)
+        default:
+            break
         }
 
         let N = Float(length)

@@ -7,22 +7,21 @@
 //
 
 import Foundation
-import Upsurge
+import Atoll
+import Accelerate
 
 public class FFT {
 
     public final class Complex {
-        public var real: FloatBuffer
-        public var imaginary: FloatBuffer
+        public var real: FloatList
+        public var imaginary: FloatList
 
         public var dspSplitComplex: DSPSplitComplex
 
         public init(_ size: Int = 0) {
-            real      = FloatBuffer(zeros: size)
-            imaginary = FloatBuffer(zeros: size)
-            dspSplitComplex = withPointers(&real, &imaginary) { (realPtr, imagPtr) -> DSPSplitComplex in
-                return DSPSplitComplex(realp: realPtr, imagp: imagPtr)
-            }
+            real      = FloatList(count: size)
+            imaginary = FloatList(count: size)
+            dspSplitComplex = DSPSplitComplex(realp: real.pointer, imagp: imaginary.pointer)
         }
     }
 
@@ -41,15 +40,15 @@ public class FFT {
 
     public var complex = FFT.Complex()
 
-    public var real: FloatBuffer {
+    public var real: FloatList {
         return complex.real
     }
 
-    public var imaginary: FloatBuffer {
+    public var imaginary: FloatList {
         return complex.imaginary
     }
 
-    public var magnitudeSpectrum = FloatBuffer()
+    public var magnitudeSpectrum = FloatList()
 
     fileprivate var setup: FFTSetup? = nil
 
@@ -80,7 +79,7 @@ public class FFT {
         self.halfN      = n / 2
         self.sampleRate = sampleRate
 
-        self.magnitudeSpectrum = FloatBuffer(zeros: self.halfN)
+        self.magnitudeSpectrum = FloatList(count: self.halfN)
 
         complex = FFT.Complex(halfN)
 
@@ -90,9 +89,9 @@ public class FFT {
         setup = fftSetup
     }
 
-    internal func transform(buffer: FloatBuffer) {
-        var tempBuffer = FloatBuffer(zeros: n)
-        let windowBuffer: FloatBuffer = window.buffer(Length(n))
+    internal func transform(buffer: FloatList) {
+        var tempBuffer = FloatList(count: n)
+        let windowBuffer: FloatList = window.buffer(Length(n))
         tempBuffer = buffer * windowBuffer
 
         guard let fftSetup = setup else {
@@ -121,9 +120,7 @@ public class FFT {
         complex.real.mirror()
         complex.imaginary.mirror()
 
-        withPointer(&magnitudeSpectrum) { mPtr in
-            // Square all of the points in the complex...
-            vDSP_zvmags(&complex.dspSplitComplex, 1, mPtr, 1, Length(halfN))
-        }
+        // Square all of the points in the complex...
+        vDSP_zvmags(&complex.dspSplitComplex, 1, magnitudeSpectrum.pointer, 1, Length(halfN))
     }
 }

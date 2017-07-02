@@ -7,10 +7,7 @@
 //
 
 import Foundation
-import Upsurge
-
-public typealias DoubleBuffer = ValueArray<Double>
-public typealias FloatBuffer  = ValueArray<Float>
+import Atoll
 
 public typealias Decibel = FloatLiteralType
 public typealias Amp = FloatLiteralType

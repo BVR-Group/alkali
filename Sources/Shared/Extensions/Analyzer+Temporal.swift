@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Upsurge
+import Atoll
+import Accelerate
 
 extension Analyzer {
 
@@ -20,7 +21,7 @@ extension Analyzer {
         }
         var result: vDSP_Length = 0
         var lastIndex: vDSP_Length = 0
-        vDSP_nzcros(current.pointer, 1, current.vDSPLength, &lastIndex, &result, current.vDSPLength)
+        vDSP_nzcros(current.pointer, 1, current.vDSP_Length, &lastIndex, &result, current.vDSP_Length)
         return Int(result)
     }
 

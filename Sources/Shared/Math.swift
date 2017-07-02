@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Upsurge
+import Atoll
+import Accelerate
 
 public enum Math {
     public static let silenceCutoff = 1e-9
@@ -19,30 +20,22 @@ public enum Math {
         return (value == 1 || (value & (value - 1)) == 0)
     }
 
-    public static func energy<T: LinearType>(_ x: T) -> Double where T.Element == Double {
-        return Math.innerProduct(x, x)
+    public static func energy(_ x: DoubleList) -> Double {
+        return innerProduct(x, x)
     }
 
-    public static func energy<T: LinearType>(_ x: T) -> Float where T.Element == Float {
-        return Math.innerProduct(x, x)
-    }
-
-    public static func innerProduct<T: LinearType>(_ x: T, _ y: T) -> Double where T.Element == Double {
-        return Upsurge.sum(x * y)
-    }
-
-    public static func innerProduct<T: LinearType>(_ x: T, _ y: T) -> Float where T.Element == Float {
-        return Upsurge.sum(x * y)
+    public static func energy(_ x: FloatList) -> Float {
+        return innerProduct(x, x)
     }
 
     /// Computes the rolloff of a ```ValueArray```. This is the Nth percentile of the power spectral distribution.
     ///
-    public static func rolloff<T: LinearType>(_ value: T, cutoffPercent n: Float = 0.85) -> Float where T.Element == Float {
+    public static func rolloff(_ value: FloatList, cutoffPercent n: Float = 0.85) -> Float {
 
         guard value.count > 2 else {
             fatalError("Value must have more than two elements!")
         }
-        let totalEnergy = Upsurge.sum(value)
+        let totalEnergy = Atoll.sum(value)
         let threshold = totalEnergy * n
 
         var rolloffSum: Float = 0
@@ -58,12 +51,12 @@ public enum Math {
         return Float(index) / Float(value.count)
     }
 
-    /// Computes the centroid of a ```ValueArray```.
+    /// Computes the centroid of a ```FloatList```.
     ///
-    public static func centroid(_ value: ValueArray<Float>) -> Float {
-        let sumOfAmplitudes = Upsurge.sum(value)
-        let weights         = FloatBuffer(rampingThrough: 0.0...Float(value.endIndex), by: 1.0)
-        let weightedSum     = Upsurge.sum(value * weights)
+    public static func centroid(_ value: FloatList) -> Float {
+        let sumOfAmplitudes = Atoll.sum(value)
+        let weights         = FloatList(with: 0...Float(value.endIndex), by: 1)
+        let weightedSum     = sum(value * weights)
 
         if sumOfAmplitudes > 0.0 {
             return weightedSum / sumOfAmplitudes
@@ -74,32 +67,22 @@ public enum Math {
 
     /// Computes the flatness of an array, which is the ratio between the geometric mean and the
     /// arithmetic mean.
-    public static func flatness<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+    public static func flatness(_ x: FloatList) -> Float {
         // We add 1 here to avoid getting a zero result. Since this is a relative value,
         // it works just fine...
-        return Math.geometricMean(x + 1) / Upsurge.mean(x + 1)
+        return Math.geometricMean(x + 1) / mean(x + 1)
     }
 
-    public static func median(_ x: FloatBuffer) -> Float {
+    public static func median(_ x: FloatList) -> Float {
         var temp = x.copy()
         let index = temp.count / 2
-        withPointer(&temp) { tPtr in
-            vDSP_vsort(tPtr, x.vDSPLength, 1)
-        }
+        vDSP_vsort(temp.pointer, x.vDSP_Length, 1)
         return temp[index]
     }
 
-    public static func mean<T: LinearType>(_ x: T) -> T.Element where T.Element == Float {
-        return Upsurge.mean(x)
-    }
-
-    public static func geometricMean(_ x: FloatBuffer) -> Float {
+    public static func geometricMean(_ x: FloatList) -> Float {
         let result = x.copy()
-        return exp(Upsurge.sum(Upsurge.log(result)) / Float(x.count))
-    }
-
-    public static func rootMeanSquare<T: LinearType>(_ x: T) -> T.Element where T.Element == Float {
-        return Upsurge.rmsq(x)
+        return exp(log(result) / Float(x.count))
     }
 
     /// Computes the power mean of an array with a given ```Float``` power.
@@ -111,20 +94,16 @@ public enum Math {
     /// - Authors:
     /// Adapted from [Essentia](http://essentia.upf.edu/)
     ///
-    public static func powerMean(_ x: FloatBuffer, power: Float) -> Float {
+    public static func powerMean(_ x: FloatList, power: Float) -> Float {
         if power == 0 {
             return Math.geometricMean(x)
         } else {
-            var results = x.copy()
-            let powers = FloatBuffer(count: x.count, repeatedValue: power)
-            withPointers(&results, powers) { rp, pp in
-                vvpowf(rp, pp, rp, [Int32(x.count)])
-            }
-            return powf(Upsurge.mean(results), 1.0 / power)
+            let powers = FloatList(repeating: power, count: x.count)
+            return powf(mean(pow(x, powers)), 1.0 / power)
         }
     }
 
-    public static func instantPower<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+    public static func instantPower(_ x: FloatList) -> Float {
         return energy(x) / Float(x.count)
     }
 
@@ -140,17 +119,17 @@ public enum Math {
         return 20 * log10(amp)
     }
     
-    public static func duration<T: LinearType>(_ x: T, given sampleRate: SampleRate) -> Float where T.Element == Float {
+    public static func duration(_ x: FloatList, given sampleRate: SampleRate) -> Float {
         return  Float(x.count) / sampleRate
     }
 
-    public static func peakEnergy<T: LinearType>(_ x: T) -> Float where T.Element == Float {
+    public static func peakEnergy(_ x: FloatList) -> Float {
         return max(abs(x))
     }
 
     public typealias MomentsTuple = (m0: Float, m1: Float, m2: Float, m3: Float, m4: Float)
 
-    public static func centralMoments(_ value: FloatBuffer) -> MomentsTuple {
+    public static func centralMoments(_ value: FloatList) -> MomentsTuple {
         guard value.count >= 2 else {
             fatalError("Cannot compute the central moments for an array of less than two!")
         }
@@ -173,7 +152,7 @@ public enum Math {
 
     }
 
-    public static func kurtosis(_ value: FloatBuffer) -> Float {
+    public static func kurtosis(_ value: FloatList) -> Float {
         let centralMoments = Math.centralMoments(value)
         if centralMoments.m2 == 0 {
             return -3.0
@@ -182,7 +161,7 @@ public enum Math {
         }
     }
 
-    public static func skewness(_ value: FloatBuffer) -> Float {
+    public static func skewness(_ value: FloatList) -> Float {
         let centralMoments = Math.centralMoments(value)
         if centralMoments.m2 == 0 {
             return 0.0
@@ -191,14 +170,14 @@ public enum Math {
         }
     }
 
-    public static func spread(_ value: FloatBuffer) -> Float {
+    public static func spread(_ value: FloatList) -> Float {
         return Math.centralMoments(value).m2
     }
 
-    public static func crest(_ value: FloatBuffer) -> Float {
+    public static func crest(_ value: FloatList) -> Float {
         let energy = Math.energy(value)
         if energy > 0 {
-            return Upsurge.max(value) / Upsurge.mean(value)
+            return Atoll.max(value) / Atoll.mean(value)
         } else {
             return 1.0
         }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Upsurge
+import Atoll
 
 extension Analyzer {
 
@@ -43,7 +43,7 @@ extension Analyzer {
         guard let currentBuffer = currentBuffer else {
             fatalError("No buffer to analyze!")
         }
-        return Math.rootMeanSquare(currentBuffer)
+        return Atoll.rootMeanSquare(currentBuffer)
     }
 
     /// Computes the spectral kurtosis of the magnitude spectrum.
