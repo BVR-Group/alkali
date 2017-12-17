@@ -33,11 +33,11 @@ for i in 0..<bufferU.count {
 }
 //
 ////Rect
-//for i in 0..<bufferV.count {
-//    let phi = Float(0 / 44100.0)
-//    bufferV[i] = sinf(Float(i) * phi * Float.pi) > 0 ? -1 : 1
-//}
-//
+for i in 0..<bufferV.count {
+    let phi = Float(0 / 44100.0)
+    bufferV[i] = sinf(Float(i) * phi * Float.pi) > 0 ? -1 : 1
+}
+
 bufferV.map { $0 } // Inspect me to see the signal!
 bufferU.map { $0 }
 bufferT.map { $0 }

@@ -5,5 +5,6 @@
         <page name='Window'/>
         <page name='Math'/>
         <page name='UI'/>
+        <page name='FFT Test'/>
     </pages>
 </playground>

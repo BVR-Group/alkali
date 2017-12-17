@@ -21,6 +21,8 @@ public class FFT {
         public init(_ size: Int = 0) {
             real      = FloatList(count: size)
             imaginary = FloatList(count: size)
+            
+            // Wrap them in a DSPSplitComplex
             dspSplitComplex = DSPSplitComplex(realp: real.pointer, imagp: imaginary.pointer)
         }
     }
@@ -79,7 +81,7 @@ public class FFT {
         self.halfN      = n / 2
         self.sampleRate = sampleRate
 
-        self.magnitudeSpectrum = FloatList(count: self.halfN)
+        self.magnitudeSpectrum = FloatList(count: self.halfN + 1)
 
         complex = FFT.Complex(halfN)
 
@@ -106,16 +108,14 @@ public class FFT {
             vDSP_fft_zrip(fftSetup, &complex.dspSplitComplex, 1, Length(log2N), FFTDirection(FFT_FORWARD))
         }
 
-        // Halve the values to achieve appropriate scale...
-        complex.real      *= 0.5
-        complex.imaginary *= 0.5
-
-        // Make the complex results symetrical instead of doing it in
-        // the various algorithms (questionable decision)...
-        complex.real.mirror()
-        complex.imaginary.mirror()
-
         // Square all of the points in the complex...
         vDSP_zvmags(&complex.dspSplitComplex, 1, magnitudeSpectrum.pointer, 1, Length(halfN))
+        
+        // Normalize magnitudes
+        sqrtInPlace(magnitudeSpectrum)
+    }
+    
+    deinit {
+        vDSP_destroy_fftsetup(setup)
     }
 }
