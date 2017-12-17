@@ -2,33 +2,34 @@
 import Foundation
 import Alkali
 import Atoll
+import simd
 
 let size: Window.Length = 32
 
-let cosWindow: DoubleBuffer = Window.cosine.buffer(size)
+let cosWindow: DoubleList = Window.cosine.buffer(size)
 cosWindow.map { $0 }
 
-let rectWindow: DoubleBuffer = Window.rectangle.buffer(size)
+let rectWindow: DoubleList = Window.rectangle.buffer(size)
 rectWindow.map { $0 }
 
-let lancWindow: DoubleBuffer = Window.lanczos.buffer(size)
+let lancWindow: DoubleList = Window.lanczos.buffer(size)
 lancWindow.map { $0 }
 
 
-let triWindow: FloatBuffer = Window.triangle.buffer(size)
+let triWindow: FloatList = Window.triangle.buffer(size)
 triWindow.map { $0 }
 
 // Doesn't use accelerate!
-let bartlettWindow: FloatBuffer = Window.bartlett.buffer(size)
+let bartlettWindow: FloatList = Window.bartlett.buffer(size)
 bartlettWindow.map { $0 }
 
 // Doesn't use accelerate!
-let gaussianWindow: DoubleBuffer = Window.gaussian(sigma: 0.12345).buffer(size)
+let gaussianWindow: DoubleList = Window.gaussian(sigma: 0.12345).buffer(size)
 gaussianWindow.map { $0 }
 
-let hanningWindow: FloatBuffer = Window.hanning.buffer(size)
+let hanningWindow: FloatList = Window.hanning.buffer(size)
 hanningWindow.map { $0 }
 
-let hammingWindow: FloatBuffer = Window.hamming.buffer(size)
+let hammingWindow: FloatList = Window.hamming.buffer(size)
 hammingWindow.map { $0 }
 

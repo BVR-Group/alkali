@@ -70,7 +70,7 @@ public enum Math {
     public static func flatness(_ x: FloatList) -> Float {
         // We add 1 here to avoid getting a zero result. Since this is a relative value,
         // it works just fine...
-        return Math.geometricMean(x + 1) / mean(x + 1)
+        return geometricMean(x + 1) / mean(x + 1)
     }
 
     public static func median(_ x: FloatList) -> Float {
@@ -82,7 +82,7 @@ public enum Math {
 
     public static func geometricMean(_ x: FloatList) -> Float {
         let result = x.copy()
-        return exp(log(result) / Float(x.count))
+        return exp(log(sum(result)) / Float(x.count))
     }
 
     /// Computes the power mean of an array with a given ```Float``` power.
@@ -96,7 +96,7 @@ public enum Math {
     ///
     public static func powerMean(_ x: FloatList, power: Float) -> Float {
         if power == 0 {
-            return Math.geometricMean(x)
+            return geometricMean(x)
         } else {
             let powers = FloatList(repeating: power, count: x.count)
             return powf(mean(pow(x, powers)), 1.0 / power)

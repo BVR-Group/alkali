@@ -45,7 +45,7 @@ import Atoll
 //combined.map { $0 } //Inspect me to the see the signal!
 
 //let val = FloatBuffer(rampingThrough: 1...512.0, by: 1.0)
-let val = FloatBuffer(ones: 512)
+let val = FloatList(ones: 512)
 let analyzer = Analyzer(size: val.count, sampleRate: 44100.0)
 analyzer.process(frames: val)
 

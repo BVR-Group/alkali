@@ -22,11 +22,10 @@
 		FC571C5E1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
 		FC571C5F1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
 		FC6BF86D1E8AB3AA0060EC1B /* PixelCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BF86C1E8AB3AA0060EC1B /* PixelCanvas.swift */; };
-		FC6C69A51F094D03000477B3 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6C69A41F094CF4000477B3 /* Atoll.framework */; };
+		FC6C69A51F094D03000477B3 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6C69A41F094CF4000477B3 /* Atoll.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FC730C521E896B4300DDA402 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC730C511E896B4300DDA402 /* UIImage+.swift */; };
 		FC83A4F91E718B6D005A81A9 /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FC83A4F71E718B6D005A81A9 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
-		FC83A5001E718D24005A81A9 /* Upsurge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83A4FF1E718D24005A81A9 /* Upsurge.framework */; };
 		FC83A50D1E719BD3005A81A9 /* Playgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */; };
 		FC83A50E1E719BD3005A81A9 /* Playgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */; };
 		FCA527CB1E7F0E470084D550 /* Analyzer+Spectral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */; };
@@ -53,7 +52,6 @@
 		FC83A4F51E718B6D005A81A9 /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC83A4F71E718B6D005A81A9 /* Alkali.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alkali.h; sourceTree = "<group>"; };
 		FC83A4F81E718B6D005A81A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC83A4FF1E718D24005A81A9 /* Upsurge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Upsurge.framework; path = Carthage/Build/iOS/Upsurge.framework; sourceTree = "<group>"; };
 		FC83A50C1E719BD3005A81A9 /* Playgrounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playgrounds.swift; sourceTree = "<group>"; };
 		FCA527CA1E7F0E470084D550 /* Analyzer+Spectral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Analyzer+Spectral.swift"; sourceTree = "<group>"; };
 		FCCB7B191E70803F0092E4FC /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC83A5001E718D24005A81A9 /* Upsurge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +188,6 @@
 		FC83A5011E718D2C005A81A9 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				FC83A4FF1E718D24005A81A9 /* Upsurge.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -293,7 +289,7 @@
 				TargetAttributes = {
 					FC1CB85A1E70568400A8349B = {
 						CreatedOnToolsVersion = 8.3;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					FC83A4F41E718B6D005A81A9 = {
@@ -360,7 +356,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/Upsurge.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Atoll.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -546,7 +542,8 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -572,7 +569,8 @@
 				PRODUCT_NAME = Alkali;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
