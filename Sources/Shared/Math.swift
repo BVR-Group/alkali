@@ -82,7 +82,7 @@ public enum Math {
 
     public static func geometricMean(_ x: FloatList) -> Float {
         let result = x.copy()
-        return exp(log(sum(result)) / Float(x.count))
+        return exp(mean(log(result)))
     }
 
     /// Computes the power mean of an array with a given ```Float``` power.

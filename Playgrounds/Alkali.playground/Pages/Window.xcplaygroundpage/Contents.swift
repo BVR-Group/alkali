@@ -2,7 +2,7 @@
 import Foundation
 import Alkali
 import Atoll
-import simd
+
 
 let size: Window.Length = 32
 
