@@ -106,11 +106,6 @@ public class FFT {
             vDSP_fft_zrip(fftSetup, &complex.dspSplitComplex, 1, Length(log2N), FFTDirection(FFT_FORWARD))
         }
 
-        // Prepare the complex to be mirrored and correct wrong(?) values coming from the accelerate FFT...
-        complex.real[halfN]      = complex.imaginary[0]
-        complex.imaginary[halfN] = 0.0
-        complex.imaginary[0]     = 0.0
-
         // Halve the values to achieve appropriate scale...
         complex.real      *= 0.5
         complex.imaginary *= 0.5

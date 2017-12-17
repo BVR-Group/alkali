@@ -4,7 +4,7 @@ import Alkali
 import Atoll
 
 
-let size: Window.Length = 32
+let size: Window.Length = 128
 
 let cosWindow: DoubleList = Window.cosine.buffer(size)
 cosWindow.map { $0 }

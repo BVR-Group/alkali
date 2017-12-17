@@ -4,10 +4,12 @@
 import Alkali
 import Atoll
 
-//var bufferS: FloatBuffer = FloatBuffer(count: 256, repeatedValue: 0)
-//var bufferT: FloatBuffer = FloatBuffer(count: 256, repeatedValue: 0)
-//var bufferU: FloatBuffer = FloatBuffer(count: 256, repeatedValue: 0)
-//var bufferV: FloatBuffer = FloatBuffer(count: 256, repeatedValue: 0)
+let size = 512
+
+var bufferS = FloatList(count: size)
+var bufferT = FloatList(count: size)
+var bufferU = FloatList(count: size)
+var bufferV = FloatList(count: size)
 //
 ////bufferS[1] = 1
 //func fftToHz(fIndex: Int, size: Int, nyquist: Float) -> Float {
@@ -16,19 +18,19 @@ import Atoll
 //    return (i / s) * nyquist
 //}
 //
-//// Sin waves
-//for i in 0..<bufferS.count {
-//    let phi = Float(250 / 44100.0)
-//    bufferS[i] = sinf(Float(i) * phi * Float.pi)
-//}
-//for i in 0..<bufferT.count {
-//    let phi = Float(2000 / 44100.0)
-//    bufferT[i] = sinf(Float(i) * phi * Float.pi)
-//}
-//for i in 0..<bufferU.count {
-//    let phi = Float(4000 / 44100.0)
-//    bufferU[i] = sinf(Float(i) * phi * Float.pi)
-//}
+// Sin waves
+for i in 0..<bufferS.count {
+    let phi = Float(Float(size) / 44100.0)
+    bufferS[i] = sinf(Float(i) * phi * Float.pi)
+}
+for i in 0..<bufferT.count {
+    let phi = Float(2000 / 44100.0)
+    bufferT[i] = sinf(Float(i) * phi * Float.pi)
+}
+for i in 0..<bufferU.count {
+    let phi = Float(4000 / 44100.0)
+    bufferU[i] = sinf(Float(i) * phi * Float.pi)
+}
 //
 ////Rect
 //for i in 0..<bufferV.count {
@@ -36,18 +38,19 @@ import Atoll
 //    bufferV[i] = sinf(Float(i) * phi * Float.pi) > 0 ? -1 : 1
 //}
 //
-//bufferV.map { $0 } // Inspect me to see the signal!
-//bufferU.map { $0 }
-//bufferT.map { $0 }
-//bufferS.map { $0 }
-//
-//let combined = (bufferT + bufferS + bufferU + bufferV)
-//combined.map { $0 } //Inspect me to the see the signal!
+bufferV.map { $0 } // Inspect me to see the signal!
+bufferU.map { $0 }
+bufferT.map { $0 }
+bufferS.map { $0 }
+
+let combined = (bufferT + bufferS + bufferU + bufferV)
+combined.map { $0 } //Inspect me to the see the signal!
 
 //let val = FloatBuffer(rampingThrough: 1...512.0, by: 1.0)
-let val = FloatList(ones: 512)
-let analyzer = Analyzer(size: val.count, sampleRate: 44100.0)
-analyzer.process(frames: val)
+//let val = FloatList(with: 0...512, by: 1)
+let analyzer = Analyzer(size: bufferS.count, sampleRate: 44100.0)
+
+analyzer.process(frames: combined)
 
 analyzer.real.startIndex
 analyzer.real.halfIndex
