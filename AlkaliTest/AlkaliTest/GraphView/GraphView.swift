@@ -218,13 +218,13 @@ public class GraphView: View {
     /// button will appear. This button is removed again when the user taps it.
     #if os(iOS)
     public var gesturesEnabled = true {
-    didSet {
-    if gesturesEnabled {
-    addGestureRecognizers()
-    } else {
-    removeGestureRecognizers()
-    }
-    }
+        didSet {
+            if gesturesEnabled {
+                addGestureRecognizers()
+            } else {
+                removeGestureRecognizers()
+            }
+        }
     }
     #endif
     
@@ -331,8 +331,8 @@ public class GraphView: View {
     private var updateMinMaxLabelsTimer: Timer!
     
     // Subviews
-    private     var gradientBackground : _GradientView!
-    private     var accessoriesView    : _AccessoriesView!
+    private var gradientBackground : _GradientView!
+    private var accessoriesView    : _AccessoriesView!
     fileprivate var metalGraph         : _MetalGraphView!
     fileprivate var horizontalLineView : _HorizontalLinesView!
     fileprivate var maximumValueLabel  : Label!
@@ -344,10 +344,7 @@ public class GraphView: View {
     #if os(iOS)
     fileprivate var autoScaleButton    : GraphButton?
     #endif
-    
-    
-    
-    
+
     // -------------------------------
     // MARK: Initialization
     // -------------------------------
@@ -524,8 +521,8 @@ public class GraphView: View {
         titleLabel   .translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        titleLabel   .font = Font.systemFont(ofSize: 30)
-        subtitleLabel.font = Font.systemFont(ofSize: 20)
+        titleLabel   .font = Font.systemFont(ofSize: 18)
+        subtitleLabel.font = Font.systemFont(ofSize: 8)
         
         titleLabel   .textColor = Color(white: 1, alpha: 1)
         subtitleLabel.textColor = Color(white: 1, alpha: 0.6)
@@ -545,39 +542,39 @@ public class GraphView: View {
     
     #if os(iOS)
     private func addAutoScaleButton() {
-    guard autoScaleButton == nil else { return }
+        guard autoScaleButton == nil else { return }
     
-    autoScaleButton = GraphButton(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
-    autoScaleButton?.text = "Auto Scale"
-    autoScaleButton?.addTarget(self, action: #selector(autoScaleButtonTapped), for: .touchUpInside)
-    autoScaleButton?.translatesAutoresizingMaskIntoConstraints = false
-    autoScaleButton?.alpha = 0
-    addSubview(autoScaleButton!)
+        autoScaleButton = GraphButton(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+        autoScaleButton?.text = "Auto Scale"
+        autoScaleButton?.addTarget(self, action: #selector(autoScaleButtonTapped), for: .touchUpInside)
+        autoScaleButton?.translatesAutoresizingMaskIntoConstraints = false
+        autoScaleButton?.alpha = 0
+        addSubview(autoScaleButton!)
     
-    autoScaleButton?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(Constants.ValueLabelWidth + 16)).isActive = true
-    autoScaleButton?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
-    autoScaleButton?.widthAnchor.constraint(equalToConstant: 110).isActive = true
-    autoScaleButton?.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        autoScaleButton?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(Constants.ValueLabelWidth + 16)).isActive = true
+        autoScaleButton?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+        autoScaleButton?.widthAnchor.constraint(equalToConstant: 110).isActive = true
+        autoScaleButton?.heightAnchor.constraint(equalToConstant: 30).isActive = true
     
-    UIView.animate(withDuration: 0.5) {
-    self.autoScaleButton?.alpha = 1
-    }
+        UIView.animate(withDuration: 0.5) {
+            self.autoScaleButton?.alpha = 1
+        }
     }
     #endif
     
     #if os(iOS)
     private func removeAutoScaleButton() {
-    UIView.animate(
-    withDuration: 0.5,
-    delay: 0.1,
-    options: [],
-    animations: {
-    self.autoScaleButton?.alpha = 0
-    }, completion: { _ in
-    self.autoScaleButton?.removeFromSuperview()
-    self.autoScaleButton = nil
-    }
-    )
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.1,
+            options: [],
+            animations: {
+                self.autoScaleButton?.alpha = 0
+            }, completion: { _ in
+                self.autoScaleButton?.removeFromSuperview()
+                self.autoScaleButton = nil
+            }
+        )
     }
     #endif
     
@@ -598,118 +595,118 @@ public class GraphView: View {
     
     #if os(iOS)
     private func addGestureRecognizers() {
-    pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchRecognizerDidPinch))
-    pinchRecognizer?.delegate = self
-    addGestureRecognizer(pinchRecognizer!)
+        pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchRecognizerDidPinch))
+        pinchRecognizer?.delegate = self
+        addGestureRecognizer(pinchRecognizer!)
     
-    panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panRecognizerDidPan))
-    panRecognizer?.delegate = self
-    panRecognizer?.minimumNumberOfTouches = 1
-    panRecognizer?.maximumNumberOfTouches = 1
-    addGestureRecognizer(panRecognizer!)
+        panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panRecognizerDidPan))
+        panRecognizer?.delegate = self
+        panRecognizer?.minimumNumberOfTouches = 1
+        panRecognizer?.maximumNumberOfTouches = 1
+        addGestureRecognizer(panRecognizer!)
     
-    doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapRecognizerDidRecognize))
-    doubleTapRecognizer?.numberOfTapsRequired = 2
-    doubleTapRecognizer?.numberOfTouchesRequired = 1
-    addGestureRecognizer(doubleTapRecognizer!)
+        doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapRecognizerDidRecognize))
+        doubleTapRecognizer?.numberOfTapsRequired = 2
+        doubleTapRecognizer?.numberOfTouchesRequired = 1
+        addGestureRecognizer(doubleTapRecognizer!)
     }
     #endif
     
     #if os(iOS)
     private func removeGestureRecognizers() {
-    if let pinch = pinchRecognizer {
-    removeGestureRecognizer(pinch)
-    }
-    if let pan = panRecognizer {
-    removeGestureRecognizer(pan)
-    }
-    if let doubleTap = doubleTapRecognizer {
-    removeGestureRecognizer(doubleTap)
-    }
+        if let pinch = pinchRecognizer {
+            removeGestureRecognizer(pinch)
+        }
+        if let pan = panRecognizer {
+            removeGestureRecognizer(pan)
+        }
+        if let doubleTap = doubleTapRecognizer {
+            removeGestureRecognizer(doubleTap)
+        }
     }
     #endif
     
     #if os(iOS)
     @objc private func pinchRecognizerDidPinch() {
-    guard let pinch = pinchRecognizer else { return }
+        guard let pinch = pinchRecognizer else { return }
     
-    switch pinch.state {
-    case .began:
-    isAutoscaling = false
-    fallthrough
-    case .changed:
-    guard pinch.numberOfTouches >= 2 else { return }
+        switch pinch.state {
+        case .began:
+            isAutoscaling = false
+            fallthrough
+        case .changed:
+            guard pinch.numberOfTouches >= 2 else { return }
     
-    let a = pinch.location(ofTouch: 0, in: self)
-    let b = pinch.location(ofTouch: 1, in: self)
-    let dx = abs(a.x - b.x)
-    let dy = abs(a.y - b.y)
-    let midpointY = abs(a.y - b.y) / 2 + min(a.y, b.y)
+            let a = pinch.location(ofTouch: 0, in: self)
+            let b = pinch.location(ofTouch: 1, in: self)
+            let dx = abs(a.x - b.x)
+            let dy = abs(a.y - b.y)
+            let midpointY = abs(a.y - b.y) / 2 + min(a.y, b.y)
     
-    // Calculate new capacity
-    let dxScale = (dx / (dx+dy)) * (1-pinch.scale) + 1
-    let dyScale = (dy / (dx+dy)) * (1-pinch.scale) + 1
-    let newCapacity = Float(CGFloat(_capacity) * dxScale)
+            // Calculate new capacity
+            let dxScale = (dx / (dx+dy)) * (1-pinch.scale) + 1
+            let dyScale = (dy / (dx+dy)) * (1-pinch.scale) + 1
+            let newCapacity = Float(CGFloat(_capacity) * dxScale)
     
-    if newCapacity >= 2 {
-    _capacity = newCapacity
-    }
+            if newCapacity >= 2 {
+                _capacity = newCapacity
+            }
     
-    // Calculate new visible range, based on pinch location
-    let oldMin = metalGraph.uniforms.minValue
-    let oldMax = metalGraph.uniforms.maxValue
-    let oldRange = visibleRange
+            // Calculate new visible range, based on pinch location
+            let oldMin = metalGraph.uniforms.minValue
+            let oldMax = metalGraph.uniforms.maxValue
+            let oldRange = visibleRange
     
-    let oldYSpread = oldRange.upperBound - oldRange.lowerBound
-    let newYSpread = oldYSpread * Float(dyScale)
-    let spreadChange = oldYSpread - newYSpread
+            let oldYSpread = oldRange.upperBound - oldRange.lowerBound
+            let newYSpread = oldYSpread * Float(dyScale)
+            let spreadChange = oldYSpread - newYSpread
     
-    let pinchLocationRatio = midpointY / bounds.height
+            let pinchLocationRatio = midpointY / bounds.height
     
-    let newMax = oldMax - Float(pinchLocationRatio) * spreadChange
-    let newMin = oldMin + Float(1-pinchLocationRatio) * spreadChange
+            let newMax = oldMax - Float(pinchLocationRatio) * spreadChange
+            let newMin = oldMin + Float(1-pinchLocationRatio) * spreadChange
     
-    visibleRange = newMin...newMax
+            visibleRange = newMin...newMax
     
-    // Do panning, works even when one finger is lifted
-    if let prevPos = previousPinchPosY {
-    translate(with: Float(midpointY - prevPos))
-    }
+            // Do panning, works even when one finger is lifted
+            if let prevPos = previousPinchPosY {
+                translate(with: Float(midpointY - prevPos))
+            }
     
-    previousPinchPosY = midpointY
-    pinchRecognizer?.scale = 1.0
-    default:
-    // When released, cancelled, failed etc
-    previousPinchPosY = nil
-    }
+            previousPinchPosY = midpointY
+            pinchRecognizer?.scale = 1.0
+        default:
+        // When released, cancelled, failed etc
+            previousPinchPosY = nil
+        }
     }
     #endif
     
     #if os(iOS)
     @objc private func doubleTapRecognizerDidRecognize() {
-    switch sampleSize {
-    case .custom: sampleSize = .small
-    case .large : sampleSize = .small
-    case .small : sampleSize = .large
-    }
+        switch sampleSize {
+        case .custom: sampleSize = .small
+        case .large : sampleSize = .small
+        case .small : sampleSize = .large
+        }
     }
     #endif
     
     #if os(iOS)
     @objc private func panRecognizerDidPan() {
-    guard let pan = panRecognizer else { return }
+        guard let pan = panRecognizer else { return }
     
-    switch pan.state {
-    case .began:
-    isAutoscaling = false
-    fallthrough
-    case .changed:
-    guard pan.numberOfTouches == 1 else { return }
+        switch pan.state {
+        case .began:
+            isAutoscaling = false
+            fallthrough
+        case .changed:
+            guard pan.numberOfTouches == 1 else { return }
     
-    translate(with: Float(pan.translation(in: self).y))
-    panRecognizer?.setTranslation(.zero, in: self)
-    default: break
-    }
+            translate(with: Float(pan.translation(in: self).y))
+            panRecognizer?.setTranslation(.zero, in: self)
+        default: break
+        }
     }
     #endif
     
@@ -1092,7 +1089,7 @@ fileprivate class _MetalGraphView: View, RenderCycleObserver {
         setupPipeline()
         
         // Setup semaphores
-        verticesSemaphore       = DispatchSemaphore(value: 1)
+        verticesSemaphore      = DispatchSemaphore(value: 1)
         inflightBufferSemaphore = DispatchSemaphore(value: numberOfInflightBuffers)
         
         RenderCycle.shared.add(cycleObserver: self)
@@ -1105,20 +1102,20 @@ fileprivate class _MetalGraphView: View, RenderCycleObserver {
     #if os(iOS)
     
     override class var layerClass: AnyClass {
-    return CAMetalLayer.self
+        return CAMetalLayer.self
     }
     
     override func layoutSublayers(of layer: CALayer) {
-    super.layoutSublayers(of: layer)
+        super.layoutSublayers(of: layer)
     
-    let screen = window?.screen ?? UIScreen.main
-    setNewScale(screen.scale)
+        let screen = window?.screen ?? UIScreen.main
+        setNewScale(screen.scale)
     
-    #if os(iOS)
-    setNeedsDisplay()
-    #elseif os(OSX)
-    setNeedsDisplay(bounds)
-    #endif
+        #if os(iOS)
+            setNeedsDisplay()
+        #elseif os(OSX)
+            setNeedsDisplay(bounds)
+        #endif
     }
     
     #elseif os(OSX)
@@ -1156,11 +1153,11 @@ fileprivate class _MetalGraphView: View, RenderCycleObserver {
     
     #if os(iOS)
     fileprivate override func setNeedsDisplay() {
-    pthread_mutex_lock(&needsRedrawMutex)
-    needsRedraw = true
-    pthread_mutex_unlock(&needsRedrawMutex)
+        pthread_mutex_lock(&needsRedrawMutex)
+        needsRedraw = true
+        pthread_mutex_unlock(&needsRedrawMutex)
     
-    super.setNeedsDisplay()
+        super.setNeedsDisplay()
     }
     #elseif os(OSX)
     fileprivate override func setNeedsDisplay(_ invalidRect: NSRect) {
