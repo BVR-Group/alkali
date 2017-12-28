@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC063C701FF423000071DD9F /* Alkali.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC063C711FF423000071DD9F /* Alkali.framework */; };
+		FC6EC0241FF42561003D2A2F /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6EC0231FF42561003D2A2F /* Atoll.framework */; };
+		FC6EC0251FF425A0003D2A2F /* Atoll.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC6EC0231FF42561003D2A2F /* Atoll.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC6EC0271FF4359A003D2A2F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6EC0261FF4359A003D2A2F /* GraphView.swift */; };
+		FC6EC0291FF435D7003D2A2F /* graph_shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = FC6EC0281FF435D7003D2A2F /* graph_shader.metal */; };
+		FC6EC02C1FF56EF6003D2A2F /* sweep_20Hz_20000Hz_-6dBFS_5s.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC6EC02B1FF56EF6003D2A2F /* sweep_20Hz_20000Hz_-6dBFS_5s.wav */; };
+		FC6EC02E1FF5704A003D2A2F /* sin_500Hz_-6dBFS_3s.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC6EC02D1FF5704A003D2A2F /* sin_500Hz_-6dBFS_3s.wav */; };
+		FC6EC0311FF5911C003D2A2F /* headphoneshaker.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC6EC02F1FF5911B003D2A2F /* headphoneshaker.wav */; };
+		FC6EC0321FF5911C003D2A2F /* putyourhands.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC6EC0301FF5911C003D2A2F /* putyourhands.wav */; };
+		FC6EC0341FF593B5003D2A2F /* Rolemusic_-_04_-_The_Pirate_And_The_Dancer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC6EC0331FF593B5003D2A2F /* Rolemusic_-_04_-_The_Pirate_And_The_Dancer.mp3 */; };
+		FC6EC0361FF59531003D2A2F /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6EC0351FF59531003D2A2F /* WindowController.swift */; };
+		FC6EC0381FF596C0003D2A2F /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6EC0371FF596C0003D2A2F /* TabViewController.swift */; };
+		FC7AA3481FF3DCFC0015B69C /* DoomTest.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC7AA3471FF3DCFB0015B69C /* DoomTest.wav */; };
+		FC7AA34B1FF3E1270015B69C /* FFTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AA34A1FF3E1270015B69C /* FFTViewController.swift */; };
+		FC7AA34D1FF3E1680015B69C /* SpectrogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AA34C1FF3E1680015B69C /* SpectrogramViewController.swift */; };
+		FC8A51431FF3DC7200D15E76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A51421FF3DC7200D15E76 /* AppDelegate.swift */; };
+		FC8A51471FF3DC7200D15E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC8A51461FF3DC7200D15E76 /* Assets.xcassets */; };
+		FC8A514A1FF3DC7200D15E76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8A51481FF3DC7200D15E76 /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FCF104421FF4214A008EFEB9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FC6EC0251FF425A0003D2A2F /* Atoll.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FC063C711FF423000071DD9F /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6EC0231FF42561003D2A2F /* Atoll.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Atoll.framework; path = Carthage/Build/Mac/Atoll.framework; sourceTree = "<group>"; };
+		FC6EC0261FF4359A003D2A2F /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		FC6EC0281FF435D7003D2A2F /* graph_shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = graph_shader.metal; sourceTree = "<group>"; };
+		FC6EC02B1FF56EF6003D2A2F /* sweep_20Hz_20000Hz_-6dBFS_5s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sweep_20Hz_20000Hz_-6dBFS_5s.wav"; sourceTree = "<group>"; };
+		FC6EC02D1FF5704A003D2A2F /* sin_500Hz_-6dBFS_3s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sin_500Hz_-6dBFS_3s.wav"; sourceTree = "<group>"; };
+		FC6EC02F1FF5911B003D2A2F /* headphoneshaker.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = headphoneshaker.wav; sourceTree = "<group>"; };
+		FC6EC0301FF5911C003D2A2F /* putyourhands.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = putyourhands.wav; sourceTree = "<group>"; };
+		FC6EC0331FF593B5003D2A2F /* Rolemusic_-_04_-_The_Pirate_And_The_Dancer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Rolemusic_-_04_-_The_Pirate_And_The_Dancer.mp3"; sourceTree = "<group>"; };
+		FC6EC0351FF59531003D2A2F /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		FC6EC0371FF596C0003D2A2F /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		FC7AA3471FF3DCFB0015B69C /* DoomTest.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DoomTest.wav; sourceTree = "<group>"; };
+		FC7AA34A1FF3E1270015B69C /* FFTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTViewController.swift; sourceTree = "<group>"; };
+		FC7AA34C1FF3E1680015B69C /* SpectrogramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrogramViewController.swift; sourceTree = "<group>"; };
+		FC8A513F1FF3DC7200D15E76 /* AlkaliTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlkaliTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC8A51421FF3DC7200D15E76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC8A51461FF3DC7200D15E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC8A51491FF3DC7200D15E76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC8A514B1FF3DC7200D15E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC8A514C1FF3DC7200D15E76 /* AlkaliTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlkaliTest.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC8A513C1FF3DC7200D15E76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6EC0241FF42561003D2A2F /* Atoll.framework in Frameworks */,
+				FC063C701FF423000071DD9F /* Alkali.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC6EC02A1FF435E4003D2A2F /* GraphView */ = {
+			isa = PBXGroup;
+			children = (
+				FC6EC0261FF4359A003D2A2F /* GraphView.swift */,
+				FC6EC0281FF435D7003D2A2F /* graph_shader.metal */,
+			);
+			path = GraphView;
+			sourceTree = "<group>";
+		};
+		FC7AA3441FF3DCDC0015B69C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC6EC0231FF42561003D2A2F /* Atoll.framework */,
+				FC063C711FF423000071DD9F /* Alkali.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC7AA3491FF3DD000015B69C /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC6EC0331FF593B5003D2A2F /* Rolemusic_-_04_-_The_Pirate_And_The_Dancer.mp3 */,
+				FC6EC02F1FF5911B003D2A2F /* headphoneshaker.wav */,
+				FC6EC0301FF5911C003D2A2F /* putyourhands.wav */,
+				FC6EC02D1FF5704A003D2A2F /* sin_500Hz_-6dBFS_3s.wav */,
+				FC6EC02B1FF56EF6003D2A2F /* sweep_20Hz_20000Hz_-6dBFS_5s.wav */,
+				FC7AA3471FF3DCFB0015B69C /* DoomTest.wav */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		FC8A51361FF3DC7200D15E76 = {
+			isa = PBXGroup;
+			children = (
+				FC8A51411FF3DC7200D15E76 /* AlkaliTest */,
+				FC7AA3441FF3DCDC0015B69C /* Frameworks */,
+				FC8A51401FF3DC7200D15E76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC8A51401FF3DC7200D15E76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC8A513F1FF3DC7200D15E76 /* AlkaliTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC8A51411FF3DC7200D15E76 /* AlkaliTest */ = {
+			isa = PBXGroup;
+			children = (
+				FC8A514C1FF3DC7200D15E76 /* AlkaliTest.entitlements */,
+				FC8A514B1FF3DC7200D15E76 /* Info.plist */,
+				FC8A51421FF3DC7200D15E76 /* AppDelegate.swift */,
+				FC7AA34A1FF3E1270015B69C /* FFTViewController.swift */,
+				FC7AA34C1FF3E1680015B69C /* SpectrogramViewController.swift */,
+				FC6EC0371FF596C0003D2A2F /* TabViewController.swift */,
+				FC6EC0351FF59531003D2A2F /* WindowController.swift */,
+				FC8A51461FF3DC7200D15E76 /* Assets.xcassets */,
+				FC7AA3491FF3DD000015B69C /* Files */,
+				FC6EC02A1FF435E4003D2A2F /* GraphView */,
+				FC8A51481FF3DC7200D15E76 /* Main.storyboard */,
+			);
+			path = AlkaliTest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC8A513E1FF3DC7200D15E76 /* AlkaliTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC8A514F1FF3DC7200D15E76 /* Build configuration list for PBXNativeTarget "AlkaliTest" */;
+			buildPhases = (
+				FC8A513B1FF3DC7200D15E76 /* Sources */,
+				FC8A513C1FF3DC7200D15E76 /* Frameworks */,
+				FC8A513D1FF3DC7200D15E76 /* Resources */,
+				FCF104421FF4214A008EFEB9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlkaliTest;
+			productName = AlkaliTest;
+			productReference = FC8A513F1FF3DC7200D15E76 /* AlkaliTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC8A51371FF3DC7200D15E76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Dylan Wreggelsworth";
+				TargetAttributes = {
+					FC8A513E1FF3DC7200D15E76 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FC8A513A1FF3DC7200D15E76 /* Build configuration list for PBXProject "AlkaliTest" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC8A51361FF3DC7200D15E76;
+			productRefGroup = FC8A51401FF3DC7200D15E76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC8A513E1FF3DC7200D15E76 /* AlkaliTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC8A513D1FF3DC7200D15E76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6EC02C1FF56EF6003D2A2F /* sweep_20Hz_20000Hz_-6dBFS_5s.wav in Resources */,
+				FC6EC0311FF5911C003D2A2F /* headphoneshaker.wav in Resources */,
+				FC6EC0321FF5911C003D2A2F /* putyourhands.wav in Resources */,
+				FC8A51471FF3DC7200D15E76 /* Assets.xcassets in Resources */,
+				FC6EC0341FF593B5003D2A2F /* Rolemusic_-_04_-_The_Pirate_And_The_Dancer.mp3 in Resources */,
+				FC8A514A1FF3DC7200D15E76 /* Main.storyboard in Resources */,
+				FC6EC02E1FF5704A003D2A2F /* sin_500Hz_-6dBFS_3s.wav in Resources */,
+				FC7AA3481FF3DCFC0015B69C /* DoomTest.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC8A513B1FF3DC7200D15E76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC7AA34D1FF3E1680015B69C /* SpectrogramViewController.swift in Sources */,
+				FC6EC0361FF59531003D2A2F /* WindowController.swift in Sources */,
+				FC8A51431FF3DC7200D15E76 /* AppDelegate.swift in Sources */,
+				FC7AA34B1FF3E1270015B69C /* FFTViewController.swift in Sources */,
+				FC6EC0271FF4359A003D2A2F /* GraphView.swift in Sources */,
+				FC6EC0381FF596C0003D2A2F /* TabViewController.swift in Sources */,
+				FC6EC0291FF435D7003D2A2F /* graph_shader.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FC8A51481FF3DC7200D15E76 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC8A51491FF3DC7200D15E76 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC8A514D1FF3DC7200D15E76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FC8A514E1FF3DC7200D15E76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		FC8A51501FF3DC7200D15E76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AlkaliTest/AlkaliTest.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2UJ5F4MU5U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = AlkaliTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = group.bvr.AlkaliTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		FC8A51511FF3DC7200D15E76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AlkaliTest/AlkaliTest.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2UJ5F4MU5U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = AlkaliTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = group.bvr.AlkaliTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC8A513A1FF3DC7200D15E76 /* Build configuration list for PBXProject "AlkaliTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC8A514D1FF3DC7200D15E76 /* Debug */,
+				FC8A514E1FF3DC7200D15E76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC8A514F1FF3DC7200D15E76 /* Build configuration list for PBXNativeTarget "AlkaliTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC8A51501FF3DC7200D15E76 /* Debug */,
+				FC8A51511FF3DC7200D15E76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC8A51371FF3DC7200D15E76 /* Project object */;
+}

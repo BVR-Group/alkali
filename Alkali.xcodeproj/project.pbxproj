@@ -22,7 +22,7 @@
 		FC571C5E1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
 		FC571C5F1E74AF5C00B9EF16 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC571C5D1E74AF5C00B9EF16 /* FFT.swift */; };
 		FC6BF86D1E8AB3AA0060EC1B /* PixelCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BF86C1E8AB3AA0060EC1B /* PixelCanvas.swift */; };
-		FC6C69A51F094D03000477B3 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6C69A41F094CF4000477B3 /* Atoll.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FC6C69A51F094D03000477B3 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6C69A41F094CF4000477B3 /* Atoll.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FC730C521E896B4300DDA402 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC730C511E896B4300DDA402 /* UIImage+.swift */; };
 		FC83A4F91E718B6D005A81A9 /* Alkali.h in Headers */ = {isa = PBXBuildFile; fileRef = FC83A4F71E718B6D005A81A9 /* Alkali.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC83A4FD1E718BBB005A81A9 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB7B191E70803F0092E4FC /* Window.swift */; };
@@ -267,7 +267,6 @@
 				FC83A4F11E718B6D005A81A9 /* Frameworks */,
 				FC83A4F21E718B6D005A81A9 /* Headers */,
 				FC83A4F31E718B6D005A81A9 /* Resources */,
-				FC83A5021E718D5F005A81A9 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -342,21 +341,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Upsurge.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		FC83A5021E718D5F005A81A9 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/Atoll.framework",
 			);
 			name = Carthage;
 			outputPaths = (
