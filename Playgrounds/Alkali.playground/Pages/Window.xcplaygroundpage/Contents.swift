@@ -3,7 +3,6 @@ import Foundation
 import Alkali
 import Atoll
 
-
 let size: Window.Length = 128
 
 let cosWindow: DoubleList = Window.cosine.buffer(size)

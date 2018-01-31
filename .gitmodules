@@ -1,0 +1,8 @@
+[submodule "Carthage/Checkouts/Result"]
+	path = Carthage/Checkouts/Result
+	url = https://github.com/antitypical/Result.git
+[submodule "Carthage/Checkouts/SwiftGit2"]
+	url = https://github.com/SwiftGit2/SwiftGit2.git
+[submodule "Carthage/Checkouts/atoll"]
+	path = Carthage/Checkouts/atoll
+	url = https://github.com/bvr-group/atoll.git

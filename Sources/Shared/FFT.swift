@@ -90,7 +90,7 @@ public class FFT {
         }
         setup = fftSetup
     }
-
+    
     internal func transform(buffer: FloatList) {
         var tempBuffer = FloatList(count: n)
         let windowBuffer: FloatList = window.buffer(Length(n))

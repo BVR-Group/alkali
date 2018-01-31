@@ -12,7 +12,7 @@ import Alkali
 import Atoll
 
 class FFTViewController: NSViewController {
-    let analyzer = Analyzer(size: 1024, sampleRate: 44100)
+    let analyzer = Analyzer(size: 512, sampleRate: 44100)
     let player = AVAudioPlayerNode()
     let engine = AVAudioEngine()
     
@@ -52,7 +52,6 @@ class FFTViewController: NSViewController {
         graph2!.graphType = .line
         graph2!.backgroundTint = .clear
         graph2!.title = "Peak Energy"
-        graph2!.replace(with: Array(repeating: 0, count: 1000))
         graph2!.sampleColor = .gradient(top: .red, bottom: .green)
 
         stackView.addArrangedSubview(graph2!)
@@ -82,22 +81,19 @@ class FFTViewController: NSViewController {
         
         player.play()
         player.removeTap(onBus: 0)
-        
-        var frameBuffer = FloatList(count: 1024)
-        
+
         let tap: AVAudioNodeTapBlock = { [unowned self] (buffer, time) in
-            buffer.frameLength = 1024
+            buffer.frameLength = 512
             let ptr = buffer.floatChannelData![0].withMemoryRebound(to: Float.self, capacity: Int(buffer.frameLength)) { $0 }
-            frameBuffer = FloatList(from: ptr, count: Int(buffer.frameLength))
             
             guard self.player.isPlaying else { return }
             
-            self.analyzer.process(frames: frameBuffer)
+            self.analyzer.process(frames: FloatList(copyFrom: ptr, count: Int(buffer.frameLength)))
             self.mags = self.analyzer.magnitudeSpectrum.map({$0})
             self.peakEnergy.append(self.analyzer.peakEnergy())
         }
         
-        player.installTap(onBus: 0, bufferSize: 1024, format: player.outputFormat(forBus: 0), block: tap)
+        player.installTap(onBus: 0, bufferSize: 512, format: player.outputFormat(forBus: 0), block: tap)
         
         func displayLinkOutputCallback(
             _ displayLink: CVDisplayLink,

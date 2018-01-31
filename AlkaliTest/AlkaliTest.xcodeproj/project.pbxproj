@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC063C701FF423000071DD9F /* Alkali.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC063C711FF423000071DD9F /* Alkali.framework */; };
 		FC6EC0241FF42561003D2A2F /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6EC0231FF42561003D2A2F /* Atoll.framework */; };
 		FC6EC0251FF425A0003D2A2F /* Atoll.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC6EC0231FF42561003D2A2F /* Atoll.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC6EC0271FF4359A003D2A2F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6EC0261FF4359A003D2A2F /* GraphView.swift */; };
@@ -25,6 +24,7 @@
 		FC8A51431FF3DC7200D15E76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A51421FF3DC7200D15E76 /* AppDelegate.swift */; };
 		FC8A51471FF3DC7200D15E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC8A51461FF3DC7200D15E76 /* Assets.xcassets */; };
 		FC8A514A1FF3DC7200D15E76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8A51481FF3DC7200D15E76 /* Main.storyboard */; };
+		FCE8F81C1FF5CF3F00DC3018 /* Alkali.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE8F81D1FF5CF3F00DC3018 /* Alkali.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,7 +42,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FC063C711FF423000071DD9F /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6EC0231FF42561003D2A2F /* Atoll.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Atoll.framework; path = Carthage/Build/Mac/Atoll.framework; sourceTree = "<group>"; };
 		FC6EC0261FF4359A003D2A2F /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FC6EC0281FF435D7003D2A2F /* graph_shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = graph_shader.metal; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		FC8A51491FF3DC7200D15E76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC8A514B1FF3DC7200D15E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC8A514C1FF3DC7200D15E76 /* AlkaliTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlkaliTest.entitlements; sourceTree = "<group>"; };
+		FCE8F81D1FF5CF3F00DC3018 /* Alkali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alkali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCE8F81C1FF5CF3F00DC3018 /* Alkali.framework in Frameworks */,
 				FC6EC0241FF42561003D2A2F /* Atoll.framework in Frameworks */,
-				FC063C701FF423000071DD9F /* Alkali.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,8 +89,8 @@
 		FC7AA3441FF3DCDC0015B69C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCE8F81D1FF5CF3F00DC3018 /* Alkali.framework */,
 				FC6EC0231FF42561003D2A2F /* Atoll.framework */,
-				FC063C711FF423000071DD9F /* Alkali.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,7 +171,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Dylan Wreggelsworth";
 				TargetAttributes = {
 					FC8A513E1FF3DC7200D15E76 = {
@@ -259,6 +259,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -266,6 +267,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -316,6 +318,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -323,6 +326,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -347,6 +351,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
@@ -355,6 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = AlkaliTest/AlkaliTest.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -377,6 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = AlkaliTest/AlkaliTest.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
